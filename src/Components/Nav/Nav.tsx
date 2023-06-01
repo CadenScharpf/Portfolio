@@ -14,7 +14,8 @@ export function Nav() {
       justifyContent: 'right',
       alignItems: 'right',
       padding: '0 1rem',
-      height: LayoutContext.navHeight,
+      height: `${LayoutContext.navHeight}vh`,
+      maxHeight: '50px',
       //boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
       zIndex: 1
     },

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { PAGE_STYLE } from '../PageStyle'
+import { VARIANTS, PAGE_STYLE } from '../PageStyle'
 import { Nav } from '../../Components'
 
 const styles = {
@@ -13,10 +13,10 @@ const styles = {
 export function Works() {
   return (
     <motion.div
-    initial={{ y: "100%"}}
-    animate={{ y: "0%" }}
-    exit={{ opacity: 1}}
-    transition={{duration: 0.6, ease: 'easeOut'}}
+    initial="open"
+    animate="closed"
+    exit="exit"
+    variants={VARIANTS}
     className='works-page'
     style={styles.page}
     >
