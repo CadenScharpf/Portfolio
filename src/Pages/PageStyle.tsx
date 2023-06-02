@@ -15,6 +15,7 @@ export const PAGE_STYLE: MotionStyle = {
     flexDirection: 'column',
     zIndex: -1,
     alignItems: 'center',
+    height: `${(100) - LayoutContext.navHeight}vh`
 }
 
 export const VARIANTS = {

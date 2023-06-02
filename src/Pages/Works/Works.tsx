@@ -2,11 +2,12 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { VARIANTS, PAGE_STYLE } from '../PageStyle'
 import { Nav } from '../../Components'
+import { ContentWindow } from '../../Components/ContentWindow'
 
 const styles = {
   page: {
     ...PAGE_STYLE,
-    backgroundColor: '#ebde34',
+    backgroundColor: 'white',
   }
 }
 
@@ -20,7 +21,9 @@ export function Works() {
     className='works-page'
     style={styles.page}
     >
-      works
+      <ContentWindow style={{ backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)'  }}>
+        dsfda
+      </ContentWindow>
       </motion.div>
   )
 }

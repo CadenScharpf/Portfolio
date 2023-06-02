@@ -10,24 +10,26 @@ interface iContentWindowProps {
 
 const style = {
     display: 'flex-column',
-      borderRadius: '25px',
-      /* height: `${100 - LayoutContext.navHeight}vh`, */
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 5,
-      overflow: 'hidden',
+    borderRadius: '25px',
+    height: '98vh',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 5,
+    overflow: 'hidden',
+    margin: '0vh 1vh 1vh 1vh'
 }
 
 export function ContentWindow(props: iContentWindowProps) {
-  return (
-    <motion.div
-    initial={{ width: '0%' }}
-    animate={{ width: '80%' }}
-    transition={{ delay: TRANSITION_DURATION, duration: CONTENT_WINDOW_ANIMATION_DURATION, type: 'spring', bounce: 0.5 }}
-    style={{...style,...props.style}}
-  >
-    {props.children}
-  </motion.div>
-  )
+    return (
+        <motion.div
+            initial={{ width: '0%' }}
+            animate={{ width: '80%' }}
+            exit={{ width: '0%' }}
+            transition={{ delay: TRANSITION_DURATION, duration: CONTENT_WINDOW_ANIMATION_DURATION, type: 'spring', bounce: 0.4 }}
+            style={{ ...style, ...props.style }}
+        >
+            {props.children}
+        </motion.div>
+    )
 }
 
