@@ -16,6 +16,7 @@ export function Nav() {
       padding: '0 1rem',
       height: `${LayoutContext.navHeight}vh`,
       maxHeight: '50px',
+      minHeight: '50px',
       //boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
       zIndex: 1
     },

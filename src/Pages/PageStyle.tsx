@@ -1,7 +1,8 @@
 import { MotionStyle } from "framer-motion";
 import { LayoutContext } from "../Context";
 
-export const TRANSITION_DURATION = 1
+export const TRANSITION_DURATION = 1 //!< The duration of the page transition animation
+export const CONTENT_WINDOW_ANIMATION_DURATION = 1 //!< The duration of the content window expansion animation
 
 export const PAGE_STYLE: MotionStyle = {
     position: 'absolute',
@@ -10,8 +11,6 @@ export const PAGE_STYLE: MotionStyle = {
     bottom: 0, 
     left: 0,
     right: 0,
-    height: `${200-LayoutContext.navHeight}vh`,
-
     display: 'flex',
     flexDirection: 'column',
     zIndex: -1,
