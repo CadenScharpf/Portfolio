@@ -15,24 +15,15 @@ export function Home() {
     
     section: {
       borderRadius: '25px',
-      //height: '98vh',
       height: '100%'
     }
   }
 
-
-
   return (
-
-
     <ContentWindow style={{background: 'linear-gradient(to right, #141e30, #243b55)'}}>
-
         <div style={{ ...styles.section,  }}>
           <LandingSection transitionDuration={.5} />
         </div>
       </ContentWindow>
-     
-
-
   )
 }
