@@ -18,7 +18,7 @@ export function Nav() {
       maxHeight: '50px',
       minHeight: '50px',
       //boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
-      zIndex: 1
+      zIndex: 1,
     },
   
    navItem: {
@@ -45,7 +45,7 @@ export function Nav() {
       Home
       </NavLink>
       <NavLink 
-      to="/works" 
+      to="/works/web" 
       style={({ isActive, isPending }) => {
         return {
           ...styles.navItem,

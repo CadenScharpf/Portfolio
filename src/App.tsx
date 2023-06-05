@@ -11,6 +11,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Stack } from '@mui/material';
+import { PAGE_STYLE } from './Pages';
 
 const theme = createTheme({
   palette: {
@@ -23,20 +24,20 @@ const theme = createTheme({
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <ThemeProvider theme={theme}>
-          <Nav />
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Nav />
+        <div className="App" style={PAGE_STYLE}>
           <Stack style={{ position: 'absolute', left: '2%', top: "40%" }}>
-        <a href="https://github.com/CadenScharpf"><GitHubIcon style={{ color: 'black', fontSize: '5rem', zIndex: '999', width: '40px' }} /></a>
-        <a href="https://www.linkedin.com/in/cadenscharpf/"><LinkedInIcon style={{ color: '#0077b5', fontSize: '5rem', zIndex: '999', width: '40px' }} /></a>
-        <a href="https://www.youtube.com/@CadenScharpf"><YouTubeIcon style={{ color: 'red', fontSize: '5rem', zIndex: '999', width: '40px' }} /></a>
-      </Stack>
+            <a href="https://github.com/CadenScharpf"><GitHubIcon style={{ color: 'black', fontSize: '5rem', zIndex: '999', width: '40px' }} /></a>
+            <a href="https://www.linkedin.com/in/cadenscharpf/"><LinkedInIcon style={{ color: '#0077b5', fontSize: '5rem', zIndex: '999', width: '40px' }} /></a>
+            <a href="https://www.youtube.com/@CadenScharpf"><YouTubeIcon style={{ color: 'red', fontSize: '5rem', zIndex: '999', width: '40px' }} /></a>
+          </Stack>
 
           <AnimatedRoutes />
-        </ThemeProvider>
-      </Router>
-    </div>
+        </div>
+      </ThemeProvider>
+    </Router>
   );
 }
 
