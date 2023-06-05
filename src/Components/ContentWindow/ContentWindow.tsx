@@ -9,15 +9,17 @@ interface iContentWindowProps {
 
 const style: React.CSSProperties = {
   display: 'flex',
+  flexDirection: 'column',
   borderRadius: '25px',
-  height: `98%`,
+  // height: `98%`,
   alignItems: 'center',
   justifyContent: 'center',
   position: 'absolute',
   top: `${LayoutContext.navHeight}vh`,
+  bottom: '1vh',
   zIndex: 5,
   overflow: 'scroll',
-  margin: '0vh 1vh 1vh 1vh',
+  margin: '2vh 1vh 1vh 1vh',
 }
 
 export function ContentWindow(props: iContentWindowProps) {

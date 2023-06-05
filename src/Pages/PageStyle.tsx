@@ -16,6 +16,6 @@ export const PAGE_STYLE: React.CSSProperties = {
     zIndex: -1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: `${(100) - LayoutContext.navHeight}vh`,
+    height: `100%`,
 }
 
