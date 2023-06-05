@@ -12,11 +12,7 @@ export function Home() {
   const theme = useTheme();
   const sections = 1;
   const styles = {
-    page: {
-      ...PAGE_STYLE,
-      backgroundColor: theme.palette.background.default,//theme.palette.background.default
-      
-    },
+    
     section: {
       borderRadius: '25px',
       //height: '98vh',
