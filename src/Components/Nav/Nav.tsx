@@ -8,7 +8,7 @@ import { useTheme } from '@mui/material';
 export function Nav() {
   const theme = useTheme();
   
-  const styles = {
+  const styles: Record<string, React.CSSProperties> = {
     nav: {
       display : 'flex',
       justifyContent: 'right',
@@ -18,7 +18,11 @@ export function Nav() {
       maxHeight: '50px',
       minHeight: '50px',
       //boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
-      zIndex: 1,
+      zIndex: 999,
+      position: 'absolute',
+      top: 0, 
+      right: 0,
+      paddingBottom: '5vh'
     },
   
    navItem: {
@@ -45,7 +49,7 @@ export function Nav() {
       Home
       </NavLink>
       <NavLink 
-      to="/works/web" 
+      to="/works" 
       style={({ isActive, isPending }) => {
         return {
           ...styles.navItem,

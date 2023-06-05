@@ -1,11 +1,11 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { PAGE_STYLE } from '../PageStyle'
 import { Nav } from '../../Components'
 import { ContentWindow } from '../../Components/ContentWindow'
-import { WebApplications, Work } from './Components'
+import { BackendApps, WebApplications, Work } from './Components'
 import ManimCsWebPreview from './Assets/ManimCSWebPreview.png'
-import { Box, Grid } from '@mui/material'
+import { Box, Button, Grid } from '@mui/material'
 import { NavLink, Outlet } from 'react-router-dom'
 
 const styles: Record<string, React.CSSProperties> = {
@@ -28,27 +28,25 @@ const styles: Record<string, React.CSSProperties> = {
   }
 }
 
+const SECTIONS = {
+  web: WebApplications,
+  backend: BackendApps,
+}
+
 export function Works() {
+  const [category, setCategory] = React.useState<keyof typeof SECTIONS>('web')
+  useEffect(()=> {
+
+  });
   return (
     <ContentWindow style={{ backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' }}>
       <div style={styles.nav}>
-        <NavLink style={({ isActive, isPending }) => {
-        return {
-          ...styles.navItem,
-          fontWeight: isActive ? "bold" : "",
-          //color: isPending ? "red" : "black",
-        };
-      }} to="/works/web">Web Applications</NavLink>
-        <NavLink style={({ isActive, isPending }) => {
-        return {
-          ...styles.navItem,
-          fontWeight: isActive ? "bold" : "",
-          //color: isPending ? "red" : "black",
-        };
-      }} to="/works/backend">Backend Applications</NavLink>
+        <Button variant='text' style={{...styles.navItem, fontWeight: category==='web'? 'bold': ''}} onClick={()=>{setCategory('web')}}>Web Applications</Button>
+        <Button variant='text' style={{...styles.navItem, fontWeight: category==='backend'? 'bold': ''}} onClick={()=>{setCategory('backend')}}>Backend Applications</Button>
       </div>
       <Grid container spacing={2} style={{ maxHeight: '100%', overflow: 'auto', padding: '1rem' }} >
-        <Outlet />
+
+      {React.createElement(SECTIONS[category])}
       </Grid>
     </ContentWindow>
   )

@@ -15,6 +15,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: '25px',
     width: '100%',
     height: '100%',
+    opacity: 1,
   },
   img: {
     width: '100%',
@@ -52,6 +53,7 @@ export function Work(props: iWorkProps) {
       style={{ ...styles.work, ...props.containerStyle }}
       whileHover="hover"
       initial="initial"
+    
 
       >
       <img src={props.img} style={styles.img} />
