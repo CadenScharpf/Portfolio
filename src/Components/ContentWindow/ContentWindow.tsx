@@ -13,7 +13,6 @@ const style: React.CSSProperties = {
   borderRadius: '25px',
   // height: `98%`,
   alignItems: 'center',
-  justifyContent: 'center',
   position: 'absolute',
   top: `${LayoutContext.navHeight}vh`,
   bottom: '1vh',

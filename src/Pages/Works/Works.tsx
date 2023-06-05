@@ -8,13 +8,15 @@ import ManimCsWebPreview from './Assets/ManimCSWebPreview.png'
 import { Box, Grid } from '@mui/material'
 import { NavLink, Outlet } from 'react-router-dom'
 
-const styles = {
-  page: {
-    ...PAGE_STYLE,
-    backgroundColor: 'white',
-  },
+const styles: Record<string, React.CSSProperties> = {
   nav: {
-
+    display: 'inline-flex',
+    position: 'relative',
+    top: '0',
+    width: '100%',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(51, 170, 51, .4)',
+    marginBottom: '1rem',
   },
   navItem: {
     zIndex: 9999999,
@@ -29,7 +31,7 @@ const styles = {
 export function Works() {
   return (
     <ContentWindow style={{ backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' }}>
-      <div style={{ display: 'inline-flex' }}>
+      <div style={styles.nav}>
         <NavLink style={({ isActive, isPending }) => {
         return {
           ...styles.navItem,
