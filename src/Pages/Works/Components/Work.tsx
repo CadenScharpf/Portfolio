@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react'
 
 interface iWorkProps {
@@ -22,7 +23,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   overlay: {
     position: 'absolute', // Use absolute positioning
-    height: '50%',
+
     left: 0,
     right: 0,
     bottom: 0,
@@ -35,13 +36,33 @@ const styles: Record<string, React.CSSProperties> = {
 }
 
 export function Work(props: iWorkProps) {
+
+  const overlayVariants = {
+    initial: {
+      height: '0%',
+    },
+    hover: {
+      height: '50%'
+    }
+  }
+
   return (
-    <div className="work" style={{ ...styles.work, ...props.containerStyle }}>
+    <motion.div 
+      className="work" 
+      style={{ ...styles.work, ...props.containerStyle }}
+      whileHover="hover"
+      initial="initial"
+
+      >
       <img src={props.img} style={styles.img} />
-      <div style={styles.overlay}>
+      <motion.div 
+      style={styles.overlay}
+      variants={overlayVariants}
+      className='overlay'
+      >
         <h2>{props.title}</h2>
         <div>{props.description}</div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
