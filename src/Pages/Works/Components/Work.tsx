@@ -1,3 +1,5 @@
+import { Button } from '@mui/material';
+import { CSSProperties } from '@mui/styled-engine-sc';
 import { motion } from 'framer-motion';
 import React from 'react'
 
@@ -6,6 +8,8 @@ interface iWorkProps {
   title: string;
   description: string;
   containerStyle?: React.CSSProperties;
+  site? : string;
+  github? : string;
 }
 
 const styles: Record<string, React.CSSProperties> = {
@@ -32,8 +36,20 @@ const styles: Record<string, React.CSSProperties> = {
     color: 'white', // Set the text color
     backgroundColor: 'rgba(0,0,0,0.5)', // Darken the overlay
     overflow: 'scroll',
-    display: 'block'
+    
   },
+  overlayButtons: {
+    height: '20%', 
+
+    width: '100%',
+    
+
+  },
+  overlayButton: {
+    width: '50%',
+    height: '20%',
+    margin: '1rem auto 1rem auto',
+  }
 }
 
 export function Work(props: iWorkProps) {
@@ -43,8 +59,8 @@ export function Work(props: iWorkProps) {
       height: '0%',
     },
     hover: {
-      height: '50%'
-    }
+      height: '100%'
+    },
   }
 
   return (
@@ -64,6 +80,11 @@ export function Work(props: iWorkProps) {
       >
         <h2>{props.title}</h2>
         <div>{props.description}</div>
+        <div style={{...styles.overlayButtons}}>
+          {props.site? (<Button variant='text' style={{...styles.overlayButton}}>Live Site</Button>): ''}
+          {props.github? (<Button variant='text' style={{...styles.overlayButton}}>Source Code</Button>): ''}
+          
+        </div>
       </motion.div>
     </motion.div>
   )

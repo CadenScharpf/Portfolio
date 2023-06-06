@@ -15,7 +15,7 @@ const styles: Record<string, React.CSSProperties> = {
     top: '0',
     width: '100%',
     justifyContent: 'center',
-    backgroundColor: 'rgba(51, 170, 51, .4)',
+    /* backgroundColor: 'rgba(51, 170, 51, .4)', */
     marginBottom: '1rem',
   },
   navItem: {
@@ -41,8 +41,8 @@ export function Works() {
   return (
     <ContentWindow style={{ backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' }}>
       <div style={styles.nav}>
-        <Button variant='text' style={{...styles.navItem, fontWeight: category==='web'? 'bold': ''}} onClick={()=>{setCategory('web')}}>Web Applications</Button>
-        <Button variant='text' style={{...styles.navItem, fontWeight: category==='backend'? 'bold': ''}} onClick={()=>{setCategory('backend')}}>Backend Applications</Button>
+        <Button variant='text' style={{...styles.navItem, fontWeight: category==='web'? 'bold': ''}} onClick={()=>{setCategory('web')}}>Front End</Button>
+        <Button variant='text' style={{...styles.navItem, fontWeight: category==='backend'? 'bold': ''}} onClick={()=>{setCategory('backend')}}>Back End</Button>
       </div>
       <Grid container spacing={2} style={{ maxHeight: '100%', overflow: 'auto', padding: '1rem' }} >
 
