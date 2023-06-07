@@ -20,15 +20,17 @@ const styles: Record<string, React.CSSProperties> = {
     width: '100%',
     height: '100%',
     opacity: 1,
+    border: '1px solid #000',
+    
   },
   img: {
     width: '100%',
     height: '100%',
     borderRadius: '25px',
+
   },
   overlay: {
     position: 'absolute', // Use absolute positioning
-
     left: 0,
     right: 0,
     bottom: 0,
@@ -69,8 +71,6 @@ export function Work(props: iWorkProps) {
       style={{ ...styles.work, ...props.containerStyle }}
       whileHover="hover"
       initial="initial"
-    
-
       >
       <img src={props.img} style={styles.img} />
       <motion.div 

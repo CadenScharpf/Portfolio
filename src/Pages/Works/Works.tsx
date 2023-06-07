@@ -35,19 +35,21 @@ const SECTIONS = {
 
 export function Works() {
   const [category, setCategory] = React.useState<keyof typeof SECTIONS>('web')
-  useEffect(()=> {
+  useEffect(() => {
 
   });
   return (
-    <ContentWindow style={{ backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' }}>
+    <ContentWindow style={{ display: 'flex', alignItems: 'center', padding: '1rem' /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
       <div style={styles.nav}>
-        <Button variant='text' style={{...styles.navItem, fontWeight: category==='web'? 'bold': ''}} onClick={()=>{setCategory('web')}}>Front End</Button>
-        <Button variant='text' style={{...styles.navItem, fontWeight: category==='backend'? 'bold': ''}} onClick={()=>{setCategory('backend')}}>Back End</Button>
+        <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'web' ? 'bold' : '' }} onClick={() => { setCategory('web') }}>Front End</Button>
+        <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'backend' ? 'bold' : '' }} onClick={() => { setCategory('backend') }}>Back End</Button>
       </div>
-      <Grid container spacing={2} style={{ maxHeight: '100%', overflow: 'auto', padding: '1rem' }} >
 
-      {React.createElement(SECTIONS[category])}
-      </Grid>
+
+        <Grid container spacing={2} style={{}} >
+          {React.createElement(SECTIONS[category])}
+        </Grid>
+
     </ContentWindow>
   )
 }

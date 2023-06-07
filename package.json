@@ -16,6 +16,7 @@
     "@types/react-dom": "^18.2.4",
     "framer-motion": "^10.12.12",
     "fs": "^0.0.1-security",
+    "programming-languages-logos": "^0.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",

@@ -19,10 +19,13 @@ const style: React.CSSProperties = {
   zIndex: 5,
   overflow: 'scroll',
   margin: '2vh 1vh 1vh 1vh',
+  border: '4px solid transparent',
+  background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box',
+
 }
 
 export function ContentWindow(props: iContentWindowProps) {
-  const targetWidth = Math.min(1000, window.innerWidth * 0.8);
+  const targetWidth = Math.min(2000, window.innerWidth * 0.8);
 
   return (
     <motion.div
