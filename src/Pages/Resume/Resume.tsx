@@ -17,7 +17,7 @@ const SECTIONS: Record<string,React.ReactNode> = {
 }
 
 export function Resume() {
-  const [section, setSection] = React.useState('Experience')
+  const [section, setSection] = React.useState('Education')
   let sections = 3;
 
   const STYLES: Record<string, React.CSSProperties> = {

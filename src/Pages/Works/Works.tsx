@@ -44,8 +44,6 @@ export function Works() {
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'web' ? 'bold' : '' }} onClick={() => { setCategory('web') }}>Front End</Button>
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'backend' ? 'bold' : '' }} onClick={() => { setCategory('backend') }}>Back End</Button>
       </div>
-
-
         <Grid container spacing={2} style={{}} >
           {React.createElement(SECTIONS[category])}
         </Grid>
