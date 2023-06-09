@@ -12,8 +12,6 @@ export function Education() {
       <h3 style={{padding: 0, margin: 0}}>Bachelor of Science in Computer Science</h3>
       <p style={{padding: 0, margin: 0}}>August 2019 - May 2023</p>
 
-      
-      
       </div>
   )
 }

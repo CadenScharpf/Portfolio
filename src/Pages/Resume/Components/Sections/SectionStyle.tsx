@@ -5,7 +5,7 @@ export const SECTION_STYLE: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
     /* justifyContent: 'center', */
-    alignItems: 'center',
+    /* alignItems: 'center' */
     textAlign: 'left',
 
 }

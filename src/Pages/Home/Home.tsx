@@ -12,7 +12,7 @@ export function Home() {
   const theme = useTheme();
   const sections = 1;
   const styles = {
-    
+
     section: {
       borderRadius: '25px',
       height: '100%'
@@ -20,10 +20,8 @@ export function Home() {
   }
 
   return (
-    <ContentWindow style={{/* background: 'linear-gradient(to right, #141e30, #243b55)' */}}>
-        <div style={{ ...styles.section,  }}>
-          <LandingSection transitionDuration={.5} />
-        </div>
-      </ContentWindow>
+    <ContentWindow style={{/* background: 'linear-gradient(to right, #141e30, #243b55)' */ }}>
+      <LandingSection transitionDuration={.5} />
+    </ContentWindow>
   )
 }
