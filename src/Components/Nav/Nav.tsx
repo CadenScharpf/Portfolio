@@ -13,16 +13,17 @@ export function Nav() {
       display : 'flex',
       justifyContent: 'right',
       alignItems: 'right',
-      padding: '0 1rem',
-      height: `${LayoutContext.navHeight}vh`,
+      padding: '0',
+      height: LayoutContext.navHeight,
       maxHeight: '50px',
       minHeight: '50px',
       //boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
-      zIndex: 999,
+      zIndex: 6,
       position: 'absolute',
       top: 0, 
       right: 0,
-      paddingBottom: '5vh'
+      left: 0,
+      paddingBottom: '0vh'
     },
   
    navItem: {

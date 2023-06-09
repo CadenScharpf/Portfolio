@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { PAGE_STYLE, TRANSITION_DURATION, } from '../PageStyle'
+import { TRANSITION_DURATION, } from '../PageStyle'
 import { useTheme, IconButton } from '@mui/material'
 import { LayoutContext } from '../../Context';
 import { LandingSection } from './Sections';

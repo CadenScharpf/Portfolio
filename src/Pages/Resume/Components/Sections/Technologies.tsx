@@ -76,7 +76,7 @@ export function Technologies() {
   return (
     <div style={SECTION_STYLE}>
       <div style={{ width: '100%' }}><h1 style={{}}>Tech I Use</h1></div>
-      <div style={{ width: '100%', margin: '1rem 1rem 1rem 1rem' }}>
+      <div style={{ width: '100%' }}>
         <div style={{ ...styles.techBox }}>
           <h3 style={{ margin: 0, color: '#333' }}>These are, but not limited to, the tech I use for building client-side applications</h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'left', backgroundColor: 'transparent' }}>

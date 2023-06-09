@@ -17,12 +17,12 @@ const SECTIONS: Record<string,React.ReactNode> = {
 }
 
 export function Resume() {
-  const [section, setSection] = React.useState('Education')
+  const [section, setSection] = React.useState('Technologies')
   let sections = 3;
 
   const STYLES: Record<string, React.CSSProperties> = {
     navButton: {
-      position: 'absolute', color: 'black', fontSize: '1rem', flexDirection: 'column'
+      position: 'relative', color: 'black', fontSize: '1rem', flexDirection: 'column'
     }
   }
 
@@ -36,14 +36,14 @@ export function Resume() {
         <ExpandLessIcon />
         {Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)-1]}
       </IconButton>
+      {SECTIONS[section]}
       <IconButton 
-        style={{...STYLES.navButton, bottom: 0, display: Object.keys(SECTIONS).indexOf(section)<sections-1? 'flex': 'none',}}
+        style={{...STYLES.navButton, display: Object.keys(SECTIONS).indexOf(section)<sections-1? 'flex': 'none',}}
         onClick={()=> setSection(Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)+1])}
       >
         {Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)+1]}
         <ExpandMoreIcon />
       </IconButton>
-      {SECTIONS[section]}
     </ContentWindow>
   )
 }
