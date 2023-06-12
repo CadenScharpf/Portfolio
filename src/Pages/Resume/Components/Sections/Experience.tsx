@@ -6,7 +6,7 @@ import { Button, IconButton } from '@mui/material'
 export function Experience() {
   return (
     <div style={SECTION_STYLE}>
-      <div style={{ width: '100%' }}>
+      <div style={{ width: 'auto'  }}>
         <h1 style={{}}>Professional Experience</h1>
         <div className='experience' style={{}}>
           <h2 style={{margin: 0}}>Iridium Satellite Communications</h2>
@@ -25,7 +25,7 @@ export function Experience() {
             <p style={{padding: 0,margin:0}}>Aug. 2022 - Apr. 2023 </p>
           </div>
         </div>
-        <div style={{width: '100%', display: 'flex', justifyContent: 'center', margin: '100px 0px 100px 0px'}}>
+        <div style={{display: 'flex', justifyContent: 'center', margin: '100px 0px 100px 0px'}}>
           <Button variant='contained' sx={{background: '', alignSelf: 'center'}} href='https://github.com/CadenScharpf/Public-Resume/blob/main/resume.pdf'>Download My Resume</Button>
         </div>
       </div>

@@ -4,21 +4,21 @@ import './App.css';
 import { AnimatedRoutes } from './Components/AnimatedRoutes/AnimatedRoutes';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Nav } from './Components';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import SouthIcon from '@mui/icons-material/South';
 import { LayoutContext } from './Context';
 import { Stack } from '@mui/material';
 import SocialStack from './Components/SocialStack/SocialStack';
 
-const theme = createTheme({
+const theme = responsiveFontSizes(createTheme({
   palette: {
     text: {
 
     }
   },
 
-})
+}))
 export const PAGE_STYLE: React.CSSProperties = {
   position: 'relative',
   top: LayoutContext.navHeight,
@@ -35,11 +35,14 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
+        <div style={{height: '100vh'}}>
+
             <Nav />
           <div className="App" style={PAGE_STYLE}>
             <SocialStack />
             <AnimatedRoutes />
           </div>
+        </div>
       </ThemeProvider>
     </Router>
   );

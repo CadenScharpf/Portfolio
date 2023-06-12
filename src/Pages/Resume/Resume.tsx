@@ -22,13 +22,13 @@ export function Resume() {
 
   const STYLES: Record<string, React.CSSProperties> = {
     navButton: {
-      position: 'relative', color: 'black', fontSize: '1rem', flexDirection: 'column'
+      position: 'sticky', color: 'black', background: 'rgba(169, 39, 245, .9)', fontSize: '1rem', flexDirection: 'column', borderRadius: '25px', padding: '.7rem'
     }
   }
 
 
   return (
-    <ContentWindow style={{ /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
+    <ContentWindow style={{margin: '1rem' /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
       <IconButton 
         style={{...STYLES.navButton, top: 0, display: Object.keys(SECTIONS).indexOf(section)>0? 'flex': 'none'}}
         onClick={() => setSection(Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)-1])}
@@ -38,7 +38,7 @@ export function Resume() {
       </IconButton>
       {SECTIONS[section]}
       <IconButton 
-        style={{...STYLES.navButton, display: Object.keys(SECTIONS).indexOf(section)<sections-1? 'flex': 'none',}}
+        style={{...STYLES.navButton, bottom: 0, display: Object.keys(SECTIONS).indexOf(section)<sections-1? 'flex': 'none',}}
         onClick={()=> setSection(Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)+1])}
       >
         {Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)+1]}
