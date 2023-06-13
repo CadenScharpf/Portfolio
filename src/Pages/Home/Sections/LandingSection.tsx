@@ -12,6 +12,47 @@ const PHASE_DURATION = 1.5 //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = 1 //!< time it takes for each phase to animate
 
 const STYLES: Record<string, React.CSSProperties> = {
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        textAlign: 'left',
+        marginTop: '0%',
+        width: '100%',
+        height: '100%'
+    },
+    column: {
+        width: '50%',
+        height: '100%',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+
+    },
+
+    headshotSm: {
+        borderRadius: '50%', border: '2px solid red', marginLeft: '10%' /* margin: '10% 0 0 10%' */
+    },
+
+    headshotLgMotionWrapper: {
+        position: 'absolute', top: 0, overflow: 'hidden'
+    },
+    headshotLg: {
+        borderRadius: '50%', width: '100%', 
+    },
+    
+    slideShowMotionWrapper: {
+        position: 'absolute', 
+        bottom: 0, 
+        overflow: 'hidden', 
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor: 'grey',
+        borderRadius: '25px'
+    }
 
 }
 
@@ -20,17 +61,13 @@ export function LandingSection(props: iLandingSectionProps) {
     const getPhaseDelay = (phase: number): number => { return ((phase * PHASE_DURATION) + props.transitionDuration + .75) }
     return (
         <>
-            <div style={{ display: 'flex', flexDirection: 'row', textAlign: 'left', marginTop: '0%', width: '100%', height: '100%'/* , paddingBottom: '15%' */ }}>
-                <div style={{ width: '50%' }}>
-                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}></div>
-                    <motion.img initial={{ display: 'none', opacity: 0, width: '0', }} animate={{ display: '', opacity: 1, width: '25%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION, /* type:"spring", bounce: .8 */ }} src={HeadShot} style={{ borderRadius: '50%', border: '2px solid red', marginLeft: '10%' /* margin: '10% 0 0 10%' */ }} />
-                    <div style={{ width: '100%', display: 'flex' }}>
-                        <motion.div style={{ margin: 0, padding: 0, color: '#000', fontSize: "clamp(4rem, 10vw, 6rem)" }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(0), duration: PHASE_ANIMATION_DURATION }}>
-                            <Typography variant='h1'>Caden<br />Scharpf</Typography>
-                        </motion.div>
+            <div className='container' style={STYLES.container}>
+                <div className='column' style={STYLES.column}>
+                    <motion.img initial={{ display: 'none', opacity: 0, width: '0', }} animate={{ display: '', opacity: 1, width: '25%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} src={HeadShot} style={STYLES.headshotSm} />
 
-                    </div>
-
+                    <motion.div style={{ margin: 0, padding: 0, color: '#000', }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(0), duration: PHASE_ANIMATION_DURATION }}>
+                        <Typography variant='h1'>Caden<br />Scharpf</Typography>
+                    </motion.div>
                     <motion.div
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(1), duration: PHASE_ANIMATION_DURATION }} style={{ padding: 0, margin: 0, color: '#000' }}>
                         <Typography variant='h2'>Software Engineer</Typography>
@@ -44,17 +81,18 @@ export function LandingSection(props: iLandingSectionProps) {
                         </motion.div>
                     </div >
                 </div>
-                <div style={{ width: '50%', height: '100%', position: 'relative' }}>
-                    <motion.div initial={{ height: '100%' }} animate={{ height: 0 }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={{ position: 'absolute', top: 0, overflow: 'hidden' }}>
-                        <img src={HeadShot} style={{ borderRadius: '50%', width: '100%', }} />
+                <div className='column' style={STYLES.column}>
+                    <motion.div initial={{ height: '100%' }} animate={{ height: '0px' }}  transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={STYLES.headshotLgMotionWrapper}>
+                        <img src={HeadShot} style={STYLES.headshotLg} />
 
                     </motion.div>
 
-                    <motion.div initial={{ height: 0 }} animate={{ height: '100%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={{ position: 'absolute', bottom: 0, overflow: 'hidden', width: '100%' }}>
-                        <div style={{ width: '100%', height: '50%', backgroundColor: '#de1b48', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <motion.div initial={{ height: 0 }} animate={{ height: '100%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={STYLES.slideShowMotionWrapper}>
+                        <div style={{ width: '100%', height: '50%', backgroundColor: 'red', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '25px' }}>
                             sfssdf
                         </div>
                     </motion.div>
+                
                 </div>
             </div>
 
