@@ -27,18 +27,18 @@ const STYLES: Record<string, React.CSSProperties> = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-
+        overflow: 'hidden'
     },
 
     headshotSm: {
-        borderRadius: '50%', border: '2px solid red', marginLeft: '10%' /* margin: '10% 0 0 10%' */
+        borderRadius: '50%', border: '1px solid red', marginLeft: '10%' /* margin: '10% 0 0 10%' */
     },
 
     headshotLgMotionWrapper: {
-        position: 'absolute', top: 0, overflow: 'hidden'
+        position: 'absolute', top: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%'
     },
     headshotLg: {
-        borderRadius: '50%', width: '100%', 
+        borderRadius: '50%', width: '100%', maxWidth: '400px'
     },
     
     slideShowMotionWrapper: {
@@ -50,7 +50,6 @@ const STYLES: Record<string, React.CSSProperties> = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: 'grey',
         borderRadius: '25px'
     }
 
@@ -59,10 +58,11 @@ const STYLES: Record<string, React.CSSProperties> = {
 export function LandingSection(props: iLandingSectionProps) {
     const theme = useTheme();
     const getPhaseDelay = (phase: number): number => { return ((phase * PHASE_DURATION) + props.transitionDuration + .75) }
+    
     return (
         <>
             <div className='container' style={STYLES.container}>
-                <div className='column' style={STYLES.column}>
+                <div className='column' style={{...STYLES.column, overflow: 'scroll'}}>
                     <motion.img initial={{ display: 'none', opacity: 0, width: '0', }} animate={{ display: '', opacity: 1, width: '25%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} src={HeadShot} style={STYLES.headshotSm} />
 
                     <motion.div style={{ margin: 0, padding: 0, color: '#000', }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(0), duration: PHASE_ANIMATION_DURATION }}>
@@ -72,7 +72,7 @@ export function LandingSection(props: iLandingSectionProps) {
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(1), duration: PHASE_ANIMATION_DURATION }} style={{ padding: 0, margin: 0, color: '#000' }}>
                         <Typography variant='h2'>Software Engineer</Typography>
                     </motion.div>
-                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(2), duration: PHASE_ANIMATION_DURATION }} style={{ width: '50%', color: '#000', textAlign: 'left' }}>
+                    <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(2), duration: PHASE_ANIMATION_DURATION }} style={{ width: '80%', color: '#000', textAlign: 'left' }}>
                         Software Engineer with 2+ years of professional full stack development and a solid foundation in building scalable applications.
                     </motion.p>
                     <div style={{ width: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
