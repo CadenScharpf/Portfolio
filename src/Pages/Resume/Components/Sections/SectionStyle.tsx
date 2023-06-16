@@ -1,11 +1,10 @@
 export const SECTION_STYLE: React.CSSProperties = {
-    margin: '5% 0 5% 0',
-    height: '100%',
+    margin: 0,
     width: '90%',
     display: 'flex',
     flexDirection: 'column',
     /* justifyContent: 'center', */
-    /* alignItems: 'center' */
+     alignItems: 'center' ,
     textAlign: 'left',
 
 }

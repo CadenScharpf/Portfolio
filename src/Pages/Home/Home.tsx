@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { PAGE_STYLE, TRANSITION_DURATION, } from '../PageStyle'
+import { TRANSITION_DURATION, } from '../PageStyle'
 import { useTheme, IconButton } from '@mui/material'
 import { LayoutContext } from '../../Context';
 import { LandingSection } from './Sections';
@@ -20,7 +20,7 @@ export function Home() {
   }
 
   return (
-    <ContentWindow style={{/* background: 'linear-gradient(to right, #141e30, #243b55)' */ }}>
+    <ContentWindow style={{padding: '1rem'/* background: 'linear-gradient(to right, #141e30, #243b55)' */ }}>
       <LandingSection transitionDuration={.5} />
     </ContentWindow>
   )

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { PAGE_STYLE } from '../PageStyle'
 import { Nav } from '../../Components'
 import { ContentWindow } from '../../Components/ContentWindow'
 import { BackendApps, WebApplications, Work } from './Components'
@@ -39,7 +38,7 @@ export function Works() {
 
   });
   return (
-    <ContentWindow style={{ display: 'flex', alignItems: 'center', padding: '1rem' /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
+    <ContentWindow style={{ display: 'flex', alignItems: 'center' /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
       <div style={styles.nav}>
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'web' ? 'bold' : '' }} onClick={() => { setCategory('web') }}>Front End</Button>
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'backend' ? 'bold' : '' }} onClick={() => { setCategory('backend') }}>Back End</Button>
