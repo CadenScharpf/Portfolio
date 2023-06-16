@@ -16,7 +16,6 @@ const style: React.CSSProperties = {
   position: 'absolute',
   top: `0`,
   bottom: '1vh',
-  zIndex: 99999,
   overflow: 'scroll',
   margin: 0,
   border: '4px solid transparent',
