@@ -21,7 +21,7 @@ export function BackendApps() {
   return (
     <>
          {APPS.map((app: App) => {
-        return(<Grid key={app.title} item xs={6}><Work img={app.img} title={app.title} description={app.description} site={app.site} github={app.github} /></Grid>)
+        return(<Grid key={app.title} item xs={12} sm={12} md={6} lg={6} xl={6}><Work img={app.img} title={app.title} description={app.description} site={app.site} github={app.github} /></Grid>)
       })}
     </>
   )

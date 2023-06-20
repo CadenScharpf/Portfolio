@@ -20,7 +20,7 @@ export function Home() {
   }
 
   return (
-    <ContentWindow style={{padding: '1rem'/* background: 'linear-gradient(to right, #141e30, #243b55)' */ }}>
+    <ContentWindow style={{/* background: 'linear-gradient(to right, #141e30, #243b55)' */ }}>
       <LandingSection transitionDuration={.5} />
     </ContentWindow>
   )

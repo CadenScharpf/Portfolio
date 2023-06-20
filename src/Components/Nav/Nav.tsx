@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
 
 import { LayoutContext } from '../../Context'
-import { useTheme } from '@mui/material';
+import { AppBar, Box, useTheme } from '@mui/material';
 
 export function Nav() {
   const theme = useTheme();
@@ -15,15 +15,13 @@ export function Nav() {
       alignItems: 'right',
       padding: '0',
       height: LayoutContext.navHeight,
-      maxHeight: '50px',
-      minHeight: '50px',
       //boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)',
-      zIndex: 6,
       position: 'absolute',
       top: 0, 
       right: 0,
       left: 0,
-      paddingBottom: '0vh'
+      paddingBottom: '0vh',
+      background: 'transparent'
     },
   
    navItem: {
@@ -36,43 +34,46 @@ export function Nav() {
   }
   
   return (
-    <div className='nav' style={styles.nav}>
-      <NavLink 
-      to="/" 
-      style={({ isActive, isPending }) => {
-        return {
-          ...styles.navItem,
-          fontWeight: isActive ? "bold" : "",
-          //color: isPending ? "red" : "black",
-        };
-      }}
-      > 
-      Home
-      </NavLink>
-      <NavLink 
-      to="/works" 
-      style={({ isActive, isPending }) => {
-        return {
-          ...styles.navItem,
-          fontWeight: isActive ? "bold" : "",
-          //color: isPending ? "red" : "black",
-        };
-      }}
-      >
-      Works
-      </NavLink>
-      <NavLink 
-      to="/resume" 
-      style={({ isActive, isPending }) => {
-        return {
-          ...styles.navItem,
-          fontWeight: isActive ? "bold" : "",
-          //color: isPending ? "red" : "black",
-        };
-      }}
-      >
-      Resume
-      </NavLink>
-    </div>
+    <AppBar className='nav' sx={styles.nav}>
+      <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: { xs: 'center', md: 'right' }, height: '100%'}}>
+
+        <NavLink 
+        to="/" 
+        style={({ isActive, isPending }) => {
+          return {
+            ...styles.navItem,
+            fontWeight: isActive ? "bold" : "",
+            //color: isPending ? "red" : "black",
+          };
+        }}
+        > 
+        Home
+        </NavLink>
+        <NavLink 
+        to="/works" 
+        style={({ isActive, isPending }) => {
+          return {
+            ...styles.navItem,
+            fontWeight: isActive ? "bold" : "",
+            //color: isPending ? "red" : "black",
+          };
+        }}
+        >
+        Works
+        </NavLink>
+        <NavLink 
+        to="/resume" 
+        style={({ isActive, isPending }) => {
+          return {
+            ...styles.navItem,
+            fontWeight: isActive ? "bold" : "",
+            //color: isPending ? "red" : "black",
+          };
+        }}
+        >
+        Resume
+        </NavLink>
+      </Box>
+    </AppBar>
   )
 }

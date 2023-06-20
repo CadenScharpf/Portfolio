@@ -13,11 +13,9 @@ const style: React.CSSProperties = {
   borderRadius: '25px',
   // height: `98%`,
   alignItems: 'center',
-  position: 'absolute',
-  top: `0`,
-  bottom: '1vh',
+  height:'90%',
   overflow: 'scroll',
-  margin: 0,
+  margin: '1vh',
   border: '4px solid transparent',
   background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box',
 

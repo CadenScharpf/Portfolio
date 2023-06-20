@@ -30,15 +30,16 @@ const PAGE_STYLE: React.CSSProperties = {
   height: '100vh',
 }
 const BODY_STYLE: React.CSSProperties = {
+  top: `${LayoutContext.navHeight}px`,
   height: `calc(100vh - ${LayoutContext.navHeight}px)`, 
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   position: 'absolute',
-  top: `${LayoutContext.navHeight}px`
 }
-
+//GOOD EXAMPLE FOR RESPONSIVE RENDERING ON HOME PAGE
+// <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
 function App() {
   return (
@@ -47,10 +48,8 @@ function App() {
           <div className="App" style={PAGE_STYLE}>
             <Nav />
             <div className="body" style={BODY_STYLE}>
-
-            {/* <SocialStack /> 
-            <AnimatedRoutes />*/}
-            <ContentWindow/>
+            <SocialStack /> 
+            <AnimatedRoutes />
             </div>
           </div>
       </ThemeProvider>
