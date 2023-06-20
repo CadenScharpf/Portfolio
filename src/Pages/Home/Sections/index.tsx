@@ -1,1 +1,0 @@
-export {LandingSection} from './LandingSection'

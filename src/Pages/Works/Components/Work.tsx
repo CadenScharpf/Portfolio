@@ -81,8 +81,8 @@ export function Work(props: iWorkProps) {
         <h2>{props.title}</h2>
         <div>{props.description}</div>
         <div style={{...styles.overlayButtons}}>
-          {props.site? (<Button variant='text' style={{...styles.overlayButton}}>Live Site</Button>): ''}
-          {props.github? (<Button variant='text' style={{...styles.overlayButton}}>Source Code</Button>): ''}
+          {props.site? (<Button href={props.site} variant='text' style={{...styles.overlayButton}}>Live Site</Button>): ''}
+          {props.github? (<Button href={props.github}  variant='text' style={{...styles.overlayButton}}>Source Code</Button>): ''}
           
         </div>
       </motion.div>

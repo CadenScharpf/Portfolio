@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Nav } from '../../Components'
 import { ContentWindow } from '../../Components/ContentWindow'
-import { BackendApps, WebApplications, Work } from './Components'
-import ManimCsWebPreview from './Assets/ManimCSWebPreview.png'
-import { Box, Button, Grid } from '@mui/material'
-import { NavLink, Outlet } from 'react-router-dom'
+import { BackendApps, Section, WebApplications, Work } from './Components'
+import { Button, Grid } from '@mui/material'
 
 const styles: Record<string, React.CSSProperties> = {
   nav: {
@@ -43,9 +40,9 @@ export function Works() {
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'web' ? 'bold' : '' }} onClick={() => { setCategory('web') }}>Front End</Button>
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'backend' ? 'bold' : '' }} onClick={() => { setCategory('backend') }}>Back End</Button>
       </div>
-        <Grid container spacing={2} sx={{px: 2}} >
+        <Section >
           {React.createElement(SECTIONS[category])}
-        </Grid>
+        </Section>
 
     </ContentWindow>
   )

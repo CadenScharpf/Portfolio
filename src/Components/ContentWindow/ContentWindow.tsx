@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { LayoutContext } from '../../Context'
+import { Grid } from '@mui/material'
 
 interface iContentWindowProps {
   children?: React.ReactNode
@@ -25,7 +26,8 @@ export function ContentWindow(props: iContentWindowProps) {
   const targetWidth = Math.min(2000, window.innerWidth * 0.8);
 
   return (
-    <motion.div
+    <Grid
+    component={motion.div}
       initial={{ width: '0%' }}
       animate={{ width: [0, targetWidth] }}
       exit={{ width: 0, opacity: 0}}
@@ -33,6 +35,6 @@ export function ContentWindow(props: iContentWindowProps) {
       style={{ ...style, ...props.style }}
     >
       {props.children}
-    </motion.div>
+    </Grid>
   )
 }

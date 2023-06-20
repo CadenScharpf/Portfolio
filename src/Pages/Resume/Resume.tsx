@@ -22,7 +22,7 @@ export function Resume() {
 
   const STYLES: Record<string, React.CSSProperties> = {
     navButton: {
-      position: 'sticky', color: 'black', background: 'rgba(169, 39, 245, .9)', fontSize: '1rem', flexDirection: 'column', borderRadius: '25px', padding: '.7rem'
+      position: 'sticky', color: 'black', background: 'rgba(94, 86, 90, 0.8)', fontSize: '1rem', flexDirection: 'column', borderRadius: '25px', padding: '.7rem'
     }
   }
 
