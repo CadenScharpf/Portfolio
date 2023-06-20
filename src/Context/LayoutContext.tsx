@@ -1,4 +1,4 @@
 
 export const LayoutContext = {
-    navHeight: 50,
+    navHeight: 64,
 }

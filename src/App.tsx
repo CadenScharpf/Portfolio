@@ -10,6 +10,7 @@ import SouthIcon from '@mui/icons-material/South';
 import { LayoutContext } from './Context';
 import { Stack } from '@mui/material';
 import SocialStack from './Components/SocialStack/SocialStack';
+import { ContentWindow } from './Components/ContentWindow';
 
 const theme = responsiveFontSizes(createTheme({
   palette: {
@@ -19,30 +20,38 @@ const theme = responsiveFontSizes(createTheme({
   },
 
 }))
-export const PAGE_STYLE: React.CSSProperties = {
+const PAGE_STYLE: React.CSSProperties = {
   position: 'relative',
-  top: LayoutContext.navHeight,
+  top: 0,
   display: 'flex',
   flexDirection: 'column',
-  zIndex: 10,
   alignItems: 'center',
   justifyContent: 'center',
-  height: `calc(100vh - ${LayoutContext.navHeight}px)`,
+  height: '100vh',
 }
-
+const BODY_STYLE: React.CSSProperties = {
+  top: `${LayoutContext.navHeight}px`,
+  height: `calc(100vh - ${LayoutContext.navHeight}px)`, 
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+}
+//GOOD EXAMPLE FOR RESPONSIVE RENDERING ON HOME PAGE
+// <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
 function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <div style={{height: '100vh'}}>
-
-            <Nav />
           <div className="App" style={PAGE_STYLE}>
-            <SocialStack />
+            <Nav />
+            <div className="body" style={BODY_STYLE}>
+            <SocialStack /> 
             <AnimatedRoutes />
+            </div>
           </div>
-        </div>
       </ThemeProvider>
     </Router>
   );
