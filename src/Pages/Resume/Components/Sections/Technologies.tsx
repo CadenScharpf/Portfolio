@@ -72,7 +72,7 @@ const ICONS: Record<string, string[]> = {
   ]
 }
 export function Technologies() {
-  const iconMap = (iconPaths: string[]) => iconPaths.map((file, idx) => <motion.img whileHover="hover" initial="initial" variants={ICON_VARIANTS} key={idx} src={file} style={styles.icon}/>)
+  const iconMap = (iconPaths: string[]) => iconPaths.map((file, idx) => <motion.img whileHover="hover" initial="initial" variants={ICON_VARIANTS} key={"icon"+idx} src={file} style={styles.icon}/>)
   return (
     <div style={SECTION_STYLE}>
       <div style={{ width: '100%' }}><h1 style={{}}>Tech I Use</h1></div>

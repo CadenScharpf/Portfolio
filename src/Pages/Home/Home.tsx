@@ -49,7 +49,8 @@ const STYLES: Record<string, React.CSSProperties> = {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      borderRadius: '25px'
+
+      background: 'tomato'
   }
 
 }
@@ -60,8 +61,8 @@ export function Home() {
   const getPhaseDelay = (phase: number): number => { return ((phase * PHASE_DURATION) + TRANSITION_DURATION) }
   return (
     
-            <Container className='container' style={STYLES.container} sx={{flexDirection: {xs: 'column', sm: 'column',  md: 'row', lg: 'row', xl: 'row'}, height: {xs: '0%', sm: '0%',  md: '100%', lg: '100%', xl: '100%'}}}>
-                <Box className='column' style={{...STYLES.column, overflow: 'scroll'}} sx={{width: {xs: '100%', sm: '100%',  md: '50%', lg: '50%', xl: '50%'}, py: 3}}>
+            <Box className='container' style={STYLES.container} sx={{flexDirection: {xs: 'column', sm: 'column',  md: 'row', lg: 'row', xl: 'row'}, height: {xs: '0%', sm: '0%',  md: '100%', lg: '100%', xl: '100%'}}}>
+                <Box className='column' style={{...STYLES.column, overflow: 'scroll'}} sx={{width: {xs: '100%', sm: '100%',  md: '50%', lg: '50%', xl: '50%'}, py: 3, px: 3}}>
                     <motion.img initial={{ display: 'none', opacity: 0, width: '0', }} animate={{ display: '', opacity: 1, width: '25%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} src={HeadShot} style={STYLES.headshotSm} />
 
                     <motion.div style={{ margin: 0, padding: 0, color: '#000', }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: getPhaseDelay(0), duration: PHASE_ANIMATION_DURATION }}>
@@ -85,11 +86,11 @@ export function Home() {
                         <img src={HeadShot} style={STYLES.headshotLg} />
 
                     </motion.div>
-                    <motion.div initial={{ height: 0 }} animate={{ height: '100%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={STYLES.slideShowMotionWrapper}>
-                        <Carousel style={{ width: '100%', height: '60%', }}/>
+                <motion.div initial={{ height: 0 }} animate={{ height: '100%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={{...STYLES.slideShowMotionWrapper}}>
+                        <Carousel style={{ width: '90%', height: '60%', }}/>
                     </motion.div>
                 
                 </Box>
-            </Container>
+            </Box>
   )
 }

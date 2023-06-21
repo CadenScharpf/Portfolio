@@ -6,8 +6,9 @@ import LensIcon from '@mui/icons-material/Lens';
 import { wrap } from "@popmotion/popcorn"
 
 import {ITEMS} from './Items'
-import { PanInfo, Point, motion } from "framer-motion";
+import { AnimatePresence, PanInfo, Point, motion } from "framer-motion";
 import { CarouselItem } from "./CarouselItem";
+import { RingVolume } from "@mui/icons-material";
 
 const sliderVariants = {
   incoming: (direction: number) => ({
@@ -34,7 +35,7 @@ interface ICarouselProps {
 }
 
 export function Carousel(props: ICarouselProps) {
-  const [[itemCount, direction], setItemCount] = useState([0, 0])
+  const [[itemCount, direction], setItemCount] = useState([0, 1])
   const activeItemIndex = wrap(0, ITEMS.length, itemCount)
 
   const swipeToItem = (swipeDirection: number) => {
@@ -63,8 +64,9 @@ export function Carousel(props: ICarouselProps) {
 
   return (
     <>
+    <AnimatePresence initial={true}>
       <Box
-        key={itemCount}
+        key={'item'+itemCount}
         component={motion.div}
         custom={direction}
         variants={sliderVariants}
@@ -84,20 +86,23 @@ export function Carousel(props: ICarouselProps) {
           alignItems: "center",
           borderRadius: "25px",
           border: "1px solid black",
-        
+          position: 'absolute',
+          top: '20%',
+          right: '5%',
+          background: 'white'
+
         }}
       >
       <CarouselItem {...ITEMS[activeItemIndex]} />
-      </Box>
       <Stack
         direction="row"
-        sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+        sx={{ width: "100%", display: "flex", justifyContent: "center", position: 'absolute', bottom: 0 }}
       >
         <IconButton onClick={() => swipeToItem(-1)}><ArrowLeftIcon /></IconButton>
 
        { ITEMS.map((item, index) => {
           return (
-            <IconButton>
+            <IconButton key={"icon"+index}>
               <LensIcon fontSize="small"/>
             </IconButton>
           );
@@ -106,6 +111,9 @@ export function Carousel(props: ICarouselProps) {
         <IconButton onClick={() => swipeToItem(1)}><ArrowRightIcon /></IconButton>
 
       </Stack>
+      </Box>
+      </AnimatePresence>
+      
     </>
   );
 }

@@ -1,10 +1,10 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Home, Resume, Works } from '../../Pages';
-import { AnimatePresence, motion, PanInfo, Variants } from 'framer-motion';
+import { AnimatePresence, motion, PanInfo, Variant, Variants } from 'framer-motion';
 import { WebApplications } from '../../Pages/Works/Components';
 import { BackendApps } from '../../Pages/Works/Components/BackendApps';
 import { TestPage } from '../../Pages/TestPage/TestPage';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ContentWindow } from '../ContentWindow';
 import { Box, Container } from '@mui/material';
 import { wrap } from '@popmotion/popcorn';
@@ -36,13 +36,12 @@ const sliderVariants: Variants = {
 };
 
 const sliderTransition = {
-  duration: 2,
+  duration: 1,
   ease: [0.56, 0.03, 0.12, 1.04],
 };
 
 export function AnimatedRoutes() {
-  const location = useLocation();
-  const [[itemCount, direction], setItemCount] = useState<[number, number]>([0, 0]);
+  const [[itemCount, direction], setItemCount] = useState<[number, number]>([0, 1]);
   const activeItemIndex = wrap(0, PAGES.length, itemCount);
 
   const swipeToItem = (swipeDirection: number) => {
@@ -60,48 +59,43 @@ export function AnimatedRoutes() {
   };
 
   const skipToItem = (imageId: number) => {
-    let changeDirection = 0;
-    if (imageId > activeItemIndex) {
-      changeDirection = 1;
-    } else if (imageId < activeItemIndex) {
-      changeDirection = -1;
-    }
-    setItemCount([imageId, changeDirection]);
+    setItemCount([imageId, imageId > activeItemIndex ? 1 : -1]);
   };
 
   return (
-    <AnimatePresence initial={true}  mode='wait'>
-      <Container sx={{width: '80%', height: '90%'}}>
+    <AnimatePresence initial={true}>
       <button onClick={() => swipeToItem(-1)}>Prev</button>
-
-        <Box
-          key={activeItemIndex}
-          component={motion.div}
-          variants={sliderVariants}
-          custom={direction}
-          initial="incoming"
-          animate="active"
-          exit="exit"
-          transition={sliderTransition}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            borderRadius: '25px',
-            alignItems: 'center',
-            height: '90%',
-            overflow: 'scroll',
-            margin: '1vh',
-            border: '4px solid transparent',
-            background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box',
-          }}
-        >
-          {React.createElement(PAGES[activeItemIndex].component)}
-        </Box>
+      <Box
+        component={motion.div}
+        key={"page" + activeItemIndex}
+        variants={sliderVariants}
+        custom={direction}
+        initial="incoming"
+        animate="active"
+        exit="exit"
+        transition={sliderTransition}
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          borderRadius: '25px',
+          alignItems: 'center',
+          height: '90%',
+          overflow: 'scroll',
+          margin: '1rem',
+          border: '4px solid transparent',
+          background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box',
+          position: 'absolute',
+          width: '80%',
+          px: 0,
+        }}
+      >
+        {React.createElement(PAGES[activeItemIndex].component)}
+      </Box>
       <button onClick={() => swipeToItem(1)}>Next</button>
-      </Container>
     </AnimatePresence>
   );
 }

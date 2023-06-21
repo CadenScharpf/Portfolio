@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -15,7 +15,7 @@ export type CarouselItemProps =
 
 export function CarouselItem(props: CarouselItemProps) {
   return (
-    <Container
+    <Box
       sx={{
         width: "100%",
         height: "100%",
@@ -31,6 +31,6 @@ export function CarouselItem(props: CarouselItemProps) {
           <h1>{props.title? props.title : ""}</h1>
         </>
       )}
-    </Container>
+    </Box>
   );
 }
