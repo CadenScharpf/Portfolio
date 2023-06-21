@@ -28,7 +28,7 @@ export function Resume() {
 
 
   return (
-    <ContentWindow style={{margin: '1rem' /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
+    <>
       <IconButton 
         style={{...STYLES.navButton, top: 0, display: Object.keys(SECTIONS).indexOf(section)>0? 'flex': 'none'}}
         onClick={() => setSection(Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)-1])}
@@ -44,6 +44,6 @@ export function Resume() {
         {Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section)+1]}
         <ExpandMoreIcon />
       </IconButton>
-    </ContentWindow>
+    </>
   )
 }

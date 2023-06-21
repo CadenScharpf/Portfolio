@@ -35,7 +35,7 @@ export function Works() {
 
   });
   return (
-    <ContentWindow style={{ display: 'flex', alignItems: 'center' /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
+    <>
       <div style={styles.nav}>
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'web' ? 'bold' : '' }} onClick={() => { setCategory('web') }}>Front End</Button>
         <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'backend' ? 'bold' : '' }} onClick={() => { setCategory('backend') }}>Back End</Button>
@@ -43,7 +43,7 @@ export function Works() {
         <Section >
           {React.createElement(SECTIONS[category])}
         </Section>
+    </>
 
-    </ContentWindow>
   )
 }

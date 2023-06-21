@@ -8,6 +8,7 @@ import HeadShot from './hs.png'
 import { Container, Typography} from '@mui/material'
 
 import { ContentWindow } from '../../Components/ContentWindow';
+import { Carousel } from './Components'
 
 const PHASE_DURATION = 1.5 //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = 1 //!< time it takes for each phase to animate
@@ -58,7 +59,7 @@ export function Home() {
 
   const getPhaseDelay = (phase: number): number => { return ((phase * PHASE_DURATION) + TRANSITION_DURATION) }
   return (
-    <ContentWindow style={{/* background: 'linear-gradient(to right, #141e30, #243b55)' */ }}>
+    
             <Container className='container' style={STYLES.container} sx={{flexDirection: {xs: 'column', sm: 'column',  md: 'row', lg: 'row', xl: 'row'}, height: {xs: '0%', sm: '0%',  md: '100%', lg: '100%', xl: '100%'}}}>
                 <Box className='column' style={{...STYLES.column, overflow: 'scroll'}} sx={{width: {xs: '100%', sm: '100%',  md: '50%', lg: '50%', xl: '50%'}, py: 3}}>
                     <motion.img initial={{ display: 'none', opacity: 0, width: '0', }} animate={{ display: '', opacity: 1, width: '25%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} src={HeadShot} style={STYLES.headshotSm} />
@@ -84,15 +85,11 @@ export function Home() {
                         <img src={HeadShot} style={STYLES.headshotLg} />
 
                     </motion.div>
-
                     <motion.div initial={{ height: 0 }} animate={{ height: '100%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={STYLES.slideShowMotionWrapper}>
-                        <div style={{ width: '100%', height: '50%', backgroundColor: 'red', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '25px' }}>
-                            sfssdf
-                        </div>
+                        <Carousel style={{ width: '100%', height: '60%', }}/>
                     </motion.div>
                 
                 </Box>
             </Container>
-    </ContentWindow>
   )
 }

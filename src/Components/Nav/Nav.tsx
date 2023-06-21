@@ -73,6 +73,18 @@ export function Nav() {
         >
         Resume
         </NavLink>
+        <NavLink 
+        to="/testpage" 
+        style={({ isActive, isPending }) => {
+          return {
+            ...styles.navItem,
+            fontWeight: isActive ? "bold" : "",
+            //color: isPending ? "red" : "black",
+          };
+        }}
+        >
+        Test Page
+        </NavLink>
       </Box>
     </AppBar>
   )
