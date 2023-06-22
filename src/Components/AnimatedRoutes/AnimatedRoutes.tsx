@@ -64,7 +64,6 @@ export function AnimatedRoutes() {
 
   return (
     <AnimatePresence initial={true}>
-      <button onClick={() => swipeToItem(-1)}>Prev</button>
       <Box
         component={motion.div}
         key={"page" + activeItemIndex}
@@ -95,7 +94,6 @@ export function AnimatedRoutes() {
       >
         {React.createElement(PAGES[activeItemIndex].component)}
       </Box>
-      <button onClick={() => swipeToItem(1)}>Next</button>
     </AnimatePresence>
   );
 }
