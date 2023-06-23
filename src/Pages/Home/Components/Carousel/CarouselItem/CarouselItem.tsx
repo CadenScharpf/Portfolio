@@ -17,11 +17,11 @@ export function CarouselItem(props: CarouselItemProps) {
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "100%",
+        height: '90%', 
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        overflow: "scroll"
       }}
     >
       {"children" in props ? (

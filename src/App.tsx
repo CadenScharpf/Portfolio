@@ -18,9 +18,9 @@ const theme = responsiveFontSizes(createTheme({
 
     }
   },
-
 }))
-const PAGE_STYLE: React.CSSProperties = {
+
+const APP_STYLE: React.CSSProperties = {
   position: 'relative',
   top: 0,
   display: 'flex',
@@ -29,6 +29,7 @@ const PAGE_STYLE: React.CSSProperties = {
   justifyContent: 'center',
   height: '100vh',
 }
+
 const BODY_STYLE: React.CSSProperties = {
   top: `${LayoutContext.navHeight}px`,
   height: `calc(100vh - ${LayoutContext.navHeight}px)`, 
@@ -38,14 +39,13 @@ const BODY_STYLE: React.CSSProperties = {
   alignItems: 'center',
   position: 'absolute',
 }
-//GOOD EXAMPLE FOR RESPONSIVE RENDERING ON HOME PAGE
-// <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+
 
 function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-          <div className="App" style={PAGE_STYLE}>
+          <div className="App" style={APP_STYLE}>
             <Nav />
             <div className="body" style={BODY_STYLE}>
             <SocialStack /> 

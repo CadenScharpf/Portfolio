@@ -1,2 +1,2 @@
 export {Carousel} from './Carousel'
-export {ITEMS} from './Items'
+export {ITEMS} from '../../CarouselItems'

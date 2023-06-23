@@ -9,6 +9,7 @@ import { Container, Typography} from '@mui/material'
 
 import { ContentWindow } from '../../Components/ContentWindow';
 import { Carousel } from './Components'
+import { ITEMS } from './CarouselItems'
 
 const PHASE_DURATION = 1.5 //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = 1 //!< time it takes for each phase to animate
@@ -50,7 +51,7 @@ const STYLES: Record<string, React.CSSProperties> = {
       flexDirection: 'column',
       justifyContent: 'center',
 
-      background: 'tomato'
+      background: 'rgba(255, 99, 71, 1)'
   }
 
 }
@@ -87,7 +88,7 @@ export function Home() {
 
                     </motion.div>
                 <motion.div initial={{ height: 0 }} animate={{ height: '100%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={{...STYLES.slideShowMotionWrapper}}>
-                        <Carousel style={{ width: '90%', height: '60%', }}/>
+                        <Carousel data={ITEMS} style={{ width: '90%', height: '60%', }}/>
                     </motion.div>
                 
                 </Box>
