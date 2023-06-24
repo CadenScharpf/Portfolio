@@ -65,7 +65,7 @@ export function Carousel(props: ICarouselProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       swipeToItem(1); // Automatically advance to the next slide
-    }, 10000); // 10 seconds
+    },1000000/*  10000  */); // 10 seconds
 
     return () => clearInterval(interval);
   }, [itemCount, swipeToItem]);
@@ -94,12 +94,17 @@ export function Carousel(props: ICarouselProps) {
             justifyContent: "center",
             alignItems: "center",
             borderRadius: "25px",
-            border: "1px solid black",
+            border: "2.5px solid black",
             position: "absolute",
-            top: "20%",
-            right: "5%",
+            left: 0,
+            right: 0,
+            marginLeft: 'auto', 
+            marginRight: 'auto', 
+ 
             background: "white",
+            maxWidth: "850px",
             overflow: "hidden",
+
           }}
         >
           <CarouselItem {...props.data[activeItemIndex]} />

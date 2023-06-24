@@ -20,10 +20,9 @@ interface Page {
 }
 
 const PAGES: Page[] = [
-  {title: 'Resume', path: '/resume', component: Resume },
   {title: 'Home', path: '/', component: Home },
   {title: 'Works', path: '/works', component: Works },
-  {title: 'Test', path: '/testpage', component: TestPage },
+  {title: 'Resume', path: '/resume', component: Resume },
 ];
 
 const navVariants: Variants = {
@@ -116,7 +115,7 @@ export function AnimatedRoutes() {
           overflow: 'hidden',
           height: '100%', 
           width: '25px',
-          background: `linear-gradient(to right, white, white) padding-box, ${GRADIENT_COLOR_1} border-box`, 
+          background: `repeating-linear-gradient(to right, grey, white 4px)`, 
           border: '4px solid transparent',
           borderWidth: '2px 0 2px 1px',
           borderRadius: '25px 0 0 25px',
@@ -125,9 +124,12 @@ export function AnimatedRoutes() {
           alignItems: 'center',
           
         }}>
-          <Typography  variant='h6' sx={{transform: 'rotate(-90deg)', fontWeight: 'bold'}}>
-            {PAGES[wrap(0, PAGES.length, itemCount-1)].title}
-          </Typography>
+          <Box sx={{transform: 'rotate(-90deg)', background: 'rgba(255, 255, 255, 0.5)', borderRadius: 3, px: 5, height: '2rem'}}>
+            <Typography  variant='h6' sx={{ fontWeight: 'bold'}}>
+              {PAGES[wrap(0, PAGES.length, itemCount-1)].title}
+            </Typography>
+
+          </Box>
         </Box>
         <Box sx={{
           width: '95%', 
@@ -137,7 +139,7 @@ export function AnimatedRoutes() {
           background: BORDER_COLOR,
           boxShadow: '0px 0px 5px 0px black',
           overflow: 'scroll',
-
+          maxWidth: '1500px'
         }}>
         {React.createElement(PAGES[activeItemIndex].component)}
         </Box>
@@ -156,16 +158,19 @@ export function AnimatedRoutes() {
           border: '4px solid transparent',
           borderWidth: '2px 1px 2px 0px',
           borderRadius: '0 25px 25px 0',
-          background: `linear-gradient(to right, white, white) padding-box, ${GRADIENT_COLOR_2} border-box`,
+          background: `repeating-linear-gradient(to right, grey, white 4px)`, 
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           overflow: 'hidden',
           /* boxShadow: '0px 0 5px 0px black', */
         }}>
-          <Typography variant='h6' sx={{transform: 'rotate(90deg)',  fontWeight: 'bold'}}>
+          <Box sx={{transform: 'rotate(90deg)', background: 'rgba(255, 255, 255, 0.5)', borderRadius: 3, px: 5, height: '2rem'}}>
+
+          <Typography variant='h6' sx={{  fontWeight: 'bold'}}>
             {PAGES[wrap(0, PAGES.length, itemCount+1)].title}
           </Typography>
+          </Box>
           
         </Box>
       </Box>

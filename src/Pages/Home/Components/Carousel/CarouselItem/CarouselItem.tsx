@@ -17,7 +17,7 @@ export function CarouselItem(props: CarouselItemProps) {
   return (
     <Box
       sx={{
-        height: '90%', 
+        height: '100%', 
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

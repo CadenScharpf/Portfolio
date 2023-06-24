@@ -23,7 +23,6 @@ const STYLES: Record<string, React.CSSProperties> = {
       height: '100%'
   },
   column: {
-
       position: 'relative',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -35,14 +34,17 @@ const STYLES: Record<string, React.CSSProperties> = {
   },
 
   headshotLgMotionWrapper: {
-      position: 'absolute', top: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%'
+      position: 'relative', top: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', 
   },
   headshotLg: {
-      borderRadius: '50%', width: '100%', maxWidth: '400px'
+      borderRadius: '50%', 
+      width: '100%', 
+      maxWidth: '400px',
+      border: '2px solid red',
   },
   
   slideShowMotionWrapper: {
-      position: 'absolute', 
+      position: 'relative', 
       bottom: 0, 
       overflow: 'hidden', 
       width: '100%',
@@ -82,13 +84,13 @@ export function Home() {
                         </motion.div>
                     </Box >
                 </Box>
-                <Box className='column' style={STYLES.column} sx={{width: {xs: '100%', sm: '100%',  md: '50%', lg: '50%', xl: '50%'},}}>
+                <Box className='column' style={STYLES.column} sx={{display: 'flex', width: {xs: '100%', sm: '100%',  md: '50%', lg: '50%', xl: '50%'},}}>
                     <motion.div initial={{ height: '100%' }} animate={{ height: '0px' }}  transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={STYLES.headshotLgMotionWrapper}>
-                        <img src={HeadShot} style={STYLES.headshotLg} />
+                        <img alt="" src={HeadShot} style={STYLES.headshotLg} />
 
                     </motion.div>
                 <motion.div initial={{ height: 0 }} animate={{ height: '100%' }} transition={{ delay: getPhaseDelay(4), duration: PHASE_ANIMATION_DURATION }} style={{...STYLES.slideShowMotionWrapper}}>
-                        <Carousel data={ITEMS} style={{ width: '90%', height: '60%', }}/>
+                        <Carousel data={ITEMS} style={{ width: '90%', height: '70%', }}/>
                     </motion.div>
                 
                 </Box>

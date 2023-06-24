@@ -5,15 +5,16 @@ import { Technologies, Experience, Education } from "./Components";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box, IconButton } from "@mui/material";
+import { STATUS_CODES } from "http";
 
 const SECTIONS: Record<string, React.ReactNode> = {
-  Experience: <Experience />,
-  Technologies: <Technologies />,
-  Education: <Education />,
+  Education: <Education addVerticalMargin/>,
+  Technologies: <Technologies addVerticalMargin />,
+  Experience: <Experience addVerticalMargin/>,
 };
 
 export function Resume() {
-  const [section, setSection] = React.useState("Experience");
+  const [section, setSection] = React.useState("Education");
   let sections = 3;
 
   const STYLES: Record<string, React.CSSProperties> = {
@@ -23,33 +24,41 @@ export function Resume() {
       flexDirection: "column",
       borderRadius: "25px",
       padding: ".7rem",
+      position: "absolute",
+      left: 0,
+      right: 0,
+      marginLeft: 'auto', 
+      marginRight: 'auto', 
+      width: '100px', /* Need a specific value to work */
+      zIndex: 5,
+      background: "rgba(255, 255, 255, 0.8)",
+    },
+    resume: {
+      position: "relative",
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    },
+    section: {
+      position: "relative",
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      overflow: "scroll",
     },
   };
 
   return (
-    <Box
-      sx={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <Box
-        sx={{
-          position: "absolute",
-          top: 0,
-          width: "100%",
-          height: "10%",
-          display: Object.keys(SECTIONS).indexOf(section) > 0 ? "flex" : "none",
-          justifyContent: "center",
-        }}
-      >
+    <Box className="resume" sx={{ ...STYLES.resume }}>
+
         <IconButton
           style={{
             ...STYLES.navButton,
+            top: 0,
             display:
               Object.keys(SECTIONS).indexOf(section) > 0 ? "flex" : "none",
           }}
@@ -62,35 +71,11 @@ export function Resume() {
           <ExpandLessIcon />
           {Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section) - 1]}
         </IconButton>
-      </Box>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "10%",
-          width: "100%",
-          height: "80%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "scroll",
-        }}
-      >
+      <Box className="sectionWrapper" sx={{ ...STYLES.section }}>
         {SECTIONS[section]}
       </Box>
 
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: 0,
-          width: "100%",
-          height: "10%",
-          display:
-            Object.keys(SECTIONS).indexOf(section) < sections - 1
-              ? "flex"
-              : "none",
-          justifyContent: "center",
-        }}
-      >
+
         <IconButton
           style={{
             ...STYLES.navButton,
@@ -110,6 +95,5 @@ export function Resume() {
           <ExpandMoreIcon />
         </IconButton>
       </Box>
-    </Box>
   );
 }
