@@ -100,7 +100,6 @@ export function Carousel(props: ICarouselProps) {
             right: 0,
             marginLeft: 'auto', 
             marginRight: 'auto', 
- 
             background: "white",
             maxWidth: "850px",
             overflow: "hidden",
@@ -126,8 +125,8 @@ export function Carousel(props: ICarouselProps) {
             {props.data
               ? props.data.map((item, index) => {
                   return (
-                    <IconButton key={"icon" + index}>
-                      <LensIcon fontSize="small" />
+                    <IconButton key={"icon" + index} onClick={() => skipToItem(index)}>
+                      <LensIcon fontSize={index === activeItemIndex? "large" : "small"} />
                     </IconButton>
                   );
                 })

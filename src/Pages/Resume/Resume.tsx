@@ -1,37 +1,65 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ContentWindow } from "../../Components/ContentWindow";
 import { Technologies, Experience, Education } from "./Components";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useTheme } from "@mui/material";
 import { STATUS_CODES } from "http";
+import { wrap } from "@popmotion/popcorn";
 
 const SECTIONS: Record<string, React.ReactNode> = {
-  Education: <Education addVerticalMargin/>,
+  Education: <Education addVerticalMargin />,
   Technologies: <Technologies addVerticalMargin />,
-  Experience: <Experience addVerticalMargin/>,
+  Experience: <Experience addVerticalMargin />,
+};
+
+const sectionVariants = {
+  incoming: (direction: number) => ({
+    y: direction > 0 ? "100%" : "-100%",
+    scale: 1.2,
+    opacity: 0,
+  }),
+  active: { y: 0, scale: 1, opacity: 1 },
+  exit: (direction: number) => ({
+    y: direction > 0 ? "-100%" : "100%",
+    scale: 1,
+    opacity: 0.2,
+  }),
+};
+const sliderTransition = {
+  duration: 1,
+  ease: [0.56, 0.03, 0.12, 1.04],
 };
 
 export function Resume() {
+  const theme = useTheme();
   const [section, setSection] = React.useState("Education");
-  let sections = 3;
+  const [[itemCount, direction], setItemCount] = useState([0, 1]);
+  const activeItemIndex = wrap(0, Object.keys(SECTIONS).length, itemCount);
+
+  const swipeToItem = (swipeDirection: number) => {
+    setItemCount([itemCount + swipeDirection, swipeDirection]);
+  };
 
   const STYLES: Record<string, React.CSSProperties> = {
     navButton: {
       color: "black",
       fontSize: "1rem",
       flexDirection: "column",
-      borderRadius: "25px",
-      padding: ".7rem",
+      borderRadius: "5px",
       position: "absolute",
       left: 0,
       right: 0,
-      marginLeft: 'auto', 
-      marginRight: 'auto', 
-      width: '100px', /* Need a specific value to work */
+      marginLeft: "auto",
+      marginRight: "auto",
+      paddingLeft: "3px",
+      paddingRight: "3px",
+      width: "120px" /* Need a specific value to work */,
       zIndex: 5,
-      background: "rgba(255, 255, 255, 0.8)",
+      background: "rgba(255, 255, 255, 0.5)",
+      border: "2.5px solid black",
+      fontWeight: "bold",
     },
     resume: {
       position: "relative",
@@ -42,7 +70,8 @@ export function Resume() {
       justifyContent: "center",
     },
     section: {
-      position: "relative",
+      position: "absolute",
+      top: 0,
       width: "100%",
       height: "100%",
       display: "flex",
@@ -54,46 +83,50 @@ export function Resume() {
 
   return (
     <Box className="resume" sx={{ ...STYLES.resume }}>
-
-        <IconButton
-          style={{
-            ...STYLES.navButton,
-            top: 0,
-            display:
-              Object.keys(SECTIONS).indexOf(section) > 0 ? "flex" : "none",
-          }}
-          onClick={() =>
-            setSection(
-              Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section) - 1]
-            )
-          }
+      <IconButton
+        sx={{
+          ...STYLES.navButton,
+          top: 3,
+          paddingTop: 0,
+          display: activeItemIndex > 0 ? "flex" : "none",
+        }}
+        onClick={() => swipeToItem(-1)}
+      >
+        <ExpandLessIcon />
+        {Object.keys(SECTIONS)[activeItemIndex - 1]}
+      </IconButton>
+      <AnimatePresence initial={false}>
+        <Box
+          component={motion.div}
+          variants={sectionVariants}
+          custom={direction}
+          initial="incoming"
+          animate="active"
+          exit="exit"
+          transition={sliderTransition}
+          key={"resumeSection" + activeItemIndex}
+          className="sectionMotionWrapper"
+          sx={{ ...STYLES.section }}
         >
-          <ExpandLessIcon />
-          {Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section) - 1]}
-        </IconButton>
-      <Box className="sectionWrapper" sx={{ ...STYLES.section }}>
-        {SECTIONS[section]}
-      </Box>
+          {SECTIONS[Object.keys(SECTIONS)[activeItemIndex]]}
+        </Box>
+      </AnimatePresence>
 
-
-        <IconButton
-          style={{
-            ...STYLES.navButton,
-            bottom: 0,
-            display:
-              Object.keys(SECTIONS).indexOf(section) < sections - 1
-                ? "flex"
-                : "none",
-          }}
-          onClick={() =>
-            setSection(
-              Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section) + 1]
-            )
-          }
-        >
-          {Object.keys(SECTIONS)[Object.keys(SECTIONS).indexOf(section) + 1]}
-          <ExpandMoreIcon />
-        </IconButton>
-      </Box>
+      <IconButton
+        sx={{
+          ...STYLES.navButton,
+          bottom: 3,
+          paddingBottom: 0,
+          display:
+            activeItemIndex < Object.keys(SECTIONS).length - 1
+              ? "flex"
+              : "none",
+        }}
+        onClick={() => swipeToItem(1)}
+      >
+        {Object.keys(SECTIONS)[activeItemIndex + 1]}
+        <ExpandMoreIcon />
+      </IconButton>
+    </Box>
   );
 }

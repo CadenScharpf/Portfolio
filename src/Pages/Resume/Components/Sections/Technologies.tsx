@@ -13,6 +13,7 @@ import BashIcon from "./Assets/icons/other/bash.png";
 import NginxIcon from "./Assets/icons/other/nginx.png";
 import { motion } from "framer-motion";
 import { Box, Typography } from "@mui/material";
+import { MainContent } from "./MainContent";
 
 const styles: Record<string, React.CSSProperties> = {
   techBox: {
@@ -22,8 +23,9 @@ const styles: Record<string, React.CSSProperties> = {
     padding: 10,
     color: "black",
     margin: 2,
-    width: '80%',
-    maxWidth:'600px',
+    width: "90%",
+    maxWidth: "600px",
+    background: 'white'
   },
   icon: {
     height: 30,
@@ -83,15 +85,27 @@ export function Technologies(props: Props) {
       />
     ));
   return (
-    <Box sx={{...SECTION_STYLE, textAlign: 'center',  px: 2}}>
+    <Box
+      sx={{
+        ...SECTION_STYLE,
+        textAlign: "center",
+        px: 2,
+        backgroundImage: `url("https://www.asu.edu/sites/default/files/2022-03/210618-CollegeSchool-HeroTempe.jpeg")`,
+        backgroundPosition: "center",
+        backgroundSize: "fill",
+      }}
+    >
+      <MainContent title="Tech I Use">
+        <div
+          style={{
+            textAlign: "left",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
 
-      <Box sx={{ py: props.addVerticalMargin? '60px' : 0, background: 'rgba(255, 255, 255, 0.8)', width: '80%', maxWidth: '800px', height: '75%', maxHeight: 500,  borderRadius: '25px', border: '2.5px solid black ', my: props.addVerticalMargin? "60px" : 0 , overflow:'scroll', padding: '0 10px 20px 10px',  }}>
-        <div style={{ }}>
-          <Typography variant="h3" sx={{ marginBottom: 1 }}>
-            Tech I Use
-          </Typography>
-        </div>
-        <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          }}
+        >
           <div style={{ ...styles.techBox }}>
             <p style={{ margin: 0, color: "#333" }}>
               These are, but not limited to, the tech I use for building
@@ -110,8 +124,8 @@ export function Technologies(props: Props) {
           </div>
           <div style={{ ...styles.techBox }}>
             <p style={{ margin: 0, color: "#333" }}>
-              These are, but not limited to, the tech I use for building fast and
-              scalable backend applications
+              These are, but not limited to, the tech I use for building fast
+              and scalable backend applications
             </p>
             <div
               style={{
@@ -138,7 +152,7 @@ export function Technologies(props: Props) {
             </div>
           </div>
         </div>
-      </Box>
+      </MainContent>
     </Box>
   );
 }

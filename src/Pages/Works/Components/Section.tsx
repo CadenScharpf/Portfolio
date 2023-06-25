@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material'
+import { AnimatePresence } from 'framer-motion'
 import React from 'react'
 
 interface ISectionProps  {
@@ -6,9 +7,12 @@ interface ISectionProps  {
 }
 export function Section(props: ISectionProps) {
   return (
-    <Grid container spacing={2} sx={{px: 2}} >
-        {props.children}
-    </Grid>
+    <AnimatePresence mode="wait">
+
+      <Grid container spacing={2} sx={{px: 2}} >
+          {props.children}
+      </Grid>
+    </AnimatePresence>
   )
 }
 
