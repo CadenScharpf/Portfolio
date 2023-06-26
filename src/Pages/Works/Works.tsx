@@ -1,49 +1,71 @@
-import React, { useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { ContentWindow } from '../../Components/ContentWindow'
-import { BackendApps, Section, WebApplications, Work } from './Components'
-import { Button, Grid } from '@mui/material'
+import React, { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ContentWindow } from "../../Components/ContentWindow";
+import { BackendApps, Section, WebApplications, Work } from "./Components";
+import { Button, Grid } from "@mui/material";
 
 const styles: Record<string, React.CSSProperties> = {
   nav: {
-    display: 'inline-flex',
-    position: 'relative',
-    top: '0',
-    width: '100%',
-    justifyContent: 'center',
+    display: "inline-flex",
+    position: "relative",
+    top: "0",
+    width: "100%",
+    justifyContent: "center",
     /* backgroundColor: 'rgba(51, 170, 51, .4)', */
-    marginBottom: '1rem',
+    marginBottom: "1rem",
   },
   navItem: {
     zIndex: 9999999,
-    padding: '1vh 1vh 1vh 1vh',
-    textDecoration: 'none',
-    color: '#000',
-    fontWeight: '600',
-    fontSize: '1.2rem',
-  }
-}
+    padding: "1vh 1vh 1vh 1vh",
+    textDecoration: "none",
+    color: "#000",
+    fontWeight: "600",
+    fontSize: "1.2rem",
+  },
+};
 
 const SECTIONS = {
   web: WebApplications,
   backend: BackendApps,
-}
+};
 
 export function Works() {
-  const [category, setCategory] = React.useState<keyof typeof SECTIONS>('web')
-  useEffect(() => {
-
-  });
+  const [category, setCategory] = React.useState<keyof typeof SECTIONS>("web");
+  useEffect(() => {});
   return (
-    <ContentWindow style={{ display: 'flex', alignItems: 'center' /* backgroundImage: 'linear-gradient(to right, #8360c3, #2ebf91)' */ }}>
+    <>
       <div style={styles.nav}>
-        <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'web' ? 'bold' : '' }} onClick={() => { setCategory('web') }}>Front End</Button>
-        <Button variant='text' style={{ ...styles.navItem, fontWeight: category === 'backend' ? 'bold' : '' }} onClick={() => { setCategory('backend') }}>Back End</Button>
+        <Button
+          variant="text"
+          style={{
+            ...styles.navItem,
+            fontWeight: category === "web" ? "bold" : "",
+          }}
+          onClick={() => {
+            setCategory("web");
+          }}
+        >
+          Front End
+        </Button>
+        <Button
+          variant="text"
+          style={{
+            ...styles.navItem,
+            fontWeight: category === "backend" ? "bold" : "",
+          }}
+          onClick={() => {
+            setCategory("backend");
+          }}
+        >
+          Back End
+        </Button>
       </div>
-        <Section >
-          {React.createElement(SECTIONS[category])}
-        </Section>
+      <AnimatePresence>
 
-    </ContentWindow>
-  )
+        <Grid container spacing={2} sx={{ px: 2 }}>
+          {React.createElement(SECTIONS[category])}
+        </Grid>
+      </AnimatePresence>
+    </>
+  );
 }

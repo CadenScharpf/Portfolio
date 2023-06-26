@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion'
-import React from 'react'
+import { PanInfo, motion, wrap } from 'framer-motion'
+import React, { useState } from 'react'
 import { LayoutContext } from '../../Context'
 import { Grid } from '@mui/material'
+
 
 interface iContentWindowProps {
   children?: React.ReactNode
@@ -22,15 +23,23 @@ const style: React.CSSProperties = {
 
 }
 
+
 export function ContentWindow(props: iContentWindowProps) {
   const targetWidth = Math.min(2000, window.innerWidth * 0.8);
+  
+  const VARIAINTS = {
+    initial: { width: '0%' },
+    animate: { width: [0, targetWidth] },
+    exit: { width: 0, opacity: 0}
+  }
 
   return (
     <Grid
     component={motion.div}
-      initial={{ width: '0%' }}
-      animate={{ width: [0, targetWidth] }}
-      exit={{ width: 0, opacity: 0}}
+      variants={VARIAINTS}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       transition={{ type: 'spring', bounce: 0.4 }}
       style={{ ...style, ...props.style }}
     >

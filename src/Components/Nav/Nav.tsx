@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
-
 import { LayoutContext } from '../../Context'
 import { AppBar, Box, useTheme } from '@mui/material';
+
+import Logo from './logo.png'
 
 export function Nav() {
   const theme = useTheme();
@@ -11,7 +12,7 @@ export function Nav() {
   const styles: Record<string, React.CSSProperties> = {
     nav: {
       display : 'flex',
-      justifyContent: 'right',
+      justifyContent: 'left',
       alignItems: 'right',
       padding: '0',
       height: LayoutContext.navHeight,
@@ -35,44 +36,13 @@ export function Nav() {
   
   return (
     <AppBar className='nav' sx={styles.nav}>
+    <Box sx={{width: '50px', position: 'absolute', left: 10}}>
+      <img alt="" src={Logo} style={{height: '50px', margin: '.5rem'}}/>
+      </Box>
+    
+      
       <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: { xs: 'center', md: 'right' }, height: '100%'}}>
-
-        <NavLink 
-        to="/" 
-        style={({ isActive, isPending }) => {
-          return {
-            ...styles.navItem,
-            fontWeight: isActive ? "bold" : "",
-            //color: isPending ? "red" : "black",
-          };
-        }}
-        > 
-        Home
-        </NavLink>
-        <NavLink 
-        to="/works" 
-        style={({ isActive, isPending }) => {
-          return {
-            ...styles.navItem,
-            fontWeight: isActive ? "bold" : "",
-            //color: isPending ? "red" : "black",
-          };
-        }}
-        >
-        Works
-        </NavLink>
-        <NavLink 
-        to="/resume" 
-        style={({ isActive, isPending }) => {
-          return {
-            ...styles.navItem,
-            fontWeight: isActive ? "bold" : "",
-            //color: isPending ? "red" : "black",
-          };
-        }}
-        >
-        Resume
-        </NavLink>
+        cvxb
       </Box>
     </AppBar>
   )

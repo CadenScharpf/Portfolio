@@ -1,15 +1,46 @@
-import React from 'react'
-import { SECTION_STYLE } from './SectionStyle'
-import AsuIcon from './Assets/asu_fse.png'
+import React from "react";
+import { SECTION_STYLE } from "./SectionStyle";
+import AsuIcon from "./Assets/asu_fse.png";
+import AsuCampusPicture from "./Assets/asu.jpg";
+import { Box, Typography } from "@mui/material";
+import { MainContent } from "./MainContent";
 
-export function Education() {
+interface Props {
+  addVerticalMargin?: boolean;
+}
+export function Education(props: Props) {
   return (
-    <div style={{ ...SECTION_STYLE, textAlign: 'center' }}>
-      <h1 style={{}}>Education</h1>
-      <img src={AsuIcon} style={{ width: '300px' }} />
-      <h2 style={{ padding: 0, margin: 0 }}>Arizona State University</h2>
-      <h3 style={{ padding: 0, margin: 0 }}>Bachelor of Science in Computer Science</h3>
-      <p style={{ padding: 0, margin: 0, }}>August 2019 - May 2023</p>
-    </div>
-  )
+    <Box
+      sx={{
+        ...SECTION_STYLE,
+        textAlign: "center",
+        backgroundImage: `url("https://www.asu.edu/sites/default/files/2022-03/210618-CollegeSchool-HeroTempe.jpeg")`,
+        backgroundPosition: "center",
+        backgroundSize: "fill",
+      }}
+    >
+      <MainContent
+        style={{
+          width: "80%",
+          maxWidth: "666px",
+          height: "70%",
+          maxHeight: 400,
+        }}
+        title="Education"
+      >
+        <img alt="" src={AsuIcon} style={{ width: "300px" }} />
+        <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+          Arizona State University
+        </Typography>
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <Typography variant="h5" style={{ maxWidth: "500px" }}>
+            Graduated with a Bachelor of Science in Computer Science
+          </Typography>
+        </div>
+        <p style={{ padding: 0, margin: 0 }}>August 2019 - May 2023</p>
+      </MainContent>
+    </Box>
+  );
 }
