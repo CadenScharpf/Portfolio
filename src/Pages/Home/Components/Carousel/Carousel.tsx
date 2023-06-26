@@ -65,11 +65,10 @@ export function Carousel(props: ICarouselProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       swipeToItem(1); // Automatically advance to the next slide
-    },1000000/*  10000  */); // 10 seconds
+    },  10000 ); // 10 seconds
 
     return () => clearInterval(interval);
   }, [itemCount, swipeToItem]);
-
 
   return (
     <>
@@ -98,43 +97,55 @@ export function Carousel(props: ICarouselProps) {
             position: "absolute",
             left: 0,
             right: 0,
-            marginLeft: 'auto', 
-            marginRight: 'auto', 
+            marginLeft: "auto",
+            marginRight: "auto",
             background: "white",
             maxWidth: "850px",
             overflow: "hidden",
-
           }}
         >
           <CarouselItem {...props.data[activeItemIndex]} />
           <Stack
             direction="row"
             sx={{
-              width: "100%",
               display: "flex",
               justifyContent: "center",
               position: "absolute", // Set position to "relative"
-              bottom: 0, // Set bottom value to 0
-              background: "grey",
+              bottom: 3, // Set bottom value to 0
+              left: 0, 
+              right: 0,
+              marginLeft: "auto",
+              marginRight: "auto",
+              background: "rgba(255, 255, 255, 0.7)",
+              borderRadius: "25px",
+              border: "2.5px solid black",
+              maxWidth: "50%",
             }}
           >
             <IconButton onClick={() => swipeToItem(-1)}>
               <ArrowLeftIcon />
             </IconButton>
-
-            {props.data
-              ? props.data.map((item, index) => {
-                  return (
-                    <IconButton key={"icon" + index} onClick={() => skipToItem(index)}>
-                      <LensIcon fontSize={index === activeItemIndex? "large" : "small"} />
-                    </IconButton>
-                  );
-                })
-              : ""}
-
+              {props.data
+                ? props.data.map((item, index) => {
+                    return (
+                      <IconButton
+                        key={"icon" + index}
+                        onClick={() => skipToItem(index)}
+                      >
+                        <LensIcon
+                          fontSize={
+                            index === activeItemIndex ? "large" : "small"
+                          }
+                          style={{ color: "#191a21" }}
+                        />
+                      </IconButton>
+                    );
+                  })
+                : ""}
             <IconButton onClick={() => swipeToItem(1)}>
               <ArrowRightIcon />
             </IconButton>
+
           </Stack>
         </Box>
       </AnimatePresence>

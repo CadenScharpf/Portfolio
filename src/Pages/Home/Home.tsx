@@ -62,7 +62,7 @@ const STYLES: Record<string, React.CSSProperties> = {
     flexDirection: "column",
     justifyContent: "center",
 
-    background: "rgba(255, 99, 71, 1)",
+    background: "#282a36",
   },
 };
 
