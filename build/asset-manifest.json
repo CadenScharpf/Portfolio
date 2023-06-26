@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.073c9b0a.css",
+    "main.js": "/static/js/main.abb3f363.js",
+    "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
+    "static/media/hs.png": "/static/media/hs.3b2c6dea4da34ea987c8.png",
+    "static/media/flask.png": "/static/media/flask.1dfb0a77f9428d1882eb.png",
+    "static/media/PortfolioPreview.png": "/static/media/PortfolioPreview.981a1cc3c917556157b5.png",
+    "static/media/node.png": "/static/media/node.fc3bd1ec69d7a50e685a.png",
+    "static/media/ManimCsPreview.png": "/static/media/ManimCsPreview.d517ba52b684915e2d32.png",
+    "static/media/bash.png": "/static/media/bash.7c08d1ac3d7266a7c9ec.png",
+    "static/media/react.png": "/static/media/react.702a26a65699561606d2.png",
+    "static/media/ManimCSWebPreview.png": "/static/media/ManimCSWebPreview.649143a9b52bd635c10c.png",
+    "static/media/aws.png": "/static/media/aws.84d24e4e1708dc95aacf.png",
+    "static/media/letsTalk.png": "/static/media/letsTalk.3f86eef1431a90181b42.png",
+    "static/media/asu_fse.png": "/static/media/asu_fse.9de8abdc833bcb3209b8.png",
+    "static/media/logo.png": "/static/media/logo.99fad73d6812b330f853.png",
+    "static/media/sql.png": "/static/media/sql.d0875781b3030e385cc1.png",
+    "static/media/nginx.png": "/static/media/nginx.873bf04e7850b7833d65.png",
+    "static/media/spring.png": "/static/media/spring.61b376a1a317f58bb59d.png",
+    "index.html": "/index.html",
+    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
+    "main.abb3f363.js.map": "/static/js/main.abb3f363.js.map",
+    "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.abb3f363.js"
+  ]
+}
