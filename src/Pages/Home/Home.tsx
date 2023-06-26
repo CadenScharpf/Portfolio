@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { TRANSITION_DURATION } from "../PageStyle";
 import { useTheme, IconButton, Box } from "@mui/material";
 import {} from "framer-motion";
@@ -66,6 +66,11 @@ const STYLES: Record<string, React.CSSProperties> = {
   },
 };
 
+const letsTalkVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  hover: { opacity: 0 },
+};
 export function Home() {
   const theme = useTheme();
 
@@ -161,40 +166,56 @@ export function Home() {
             },
           }}
         >
-          <motion.div
-            initial={{ width: "60px", height: "60px" }}
-            animate={{
-              width: "80px",
-              height: "80px",
-              backgroundColor: "#de1b48",
-              borderStyle: "solid",
-            }}
-            transition={{
-              delay: getPhaseDelay(3),
-              duration: 2,
-              type: "spring",
-              bounce: 0.8,
-            }}
-            style={{
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderColor: "grey",
-              borderWidth: "2px",
-            }}
-          >
-            <motion.img
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+          <AnimatePresence>
+            <motion.div
+              variants={{
+                initial: {
+                  width: "60px",
+                  height: "60px",
+                },
+                animate: {
+                  width: "80px",
+                  height: "80px",
+                  backgroundColor: "#de1b48",
+                  borderStyle: "solid",
+                },
+                hover: {
+                  opacity: 0,
+                },
+              }}
+              initial="initial"
+              animate="animate"
               transition={{
                 delay: getPhaseDelay(3),
-                duration: PHASE_ANIMATION_DURATION,
+                duration: 2,
+                type: "spring",
+                bounce: 0.8,
               }}
-              src={LetsTalk}
-              style={{ width: "60px" }}
-            />
-          </motion.div>
+              style={{
+                borderRadius: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderColor: "grey",
+                borderWidth: "2px",
+              }}
+            >
+              <IconButton>
+                <motion.img
+                  variants={letsTalkVariants}
+                  initial="initial"
+                  animate="animate"
+                  whileHover=""
+                  transition={{
+                    delay: getPhaseDelay(3),
+                    duration: PHASE_ANIMATION_DURATION,
+                  }}
+                  src={LetsTalk}
+                  style={{ width: "60px" }}
+                />
+              </IconButton>
+            </motion.div>
+          </AnimatePresence>
         </Box>
       </Box>
       <Box

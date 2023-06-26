@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from 'src/Components/Nav/logo.png';
 import './App.css';
 import { AnimatedRoutes } from './Components/AnimatedRoutes/AnimatedRoutes';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
