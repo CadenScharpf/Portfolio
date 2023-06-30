@@ -1,4 +1,6 @@
 export { Home } from './Home'
 export { Resume } from './Resume'
 export { Works } from './Works'
+export { PAGES } from './Pages'
+export type { Page } from './Pages'
 export {  TRANSITION_DURATION  } from './PageStyle'
