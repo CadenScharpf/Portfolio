@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
 import { LayoutContext } from '../../Context'
 import { PAGES } from '../../Pages'
-import { AppBar, Box, Button, Stack, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Stack, Typography, useTheme } from '@mui/material';
 
 import Logo from './logo.png'
 
 interface iNavProps {
+  activePageIndex: number,
   setPage: (pageId: number) => void
 }
 
@@ -50,7 +51,7 @@ export function Nav(props: iNavProps) {
         <Stack direction="row" sx={{px: 5}}>
           {PAGES.map((page) => {
             return (
-              <Button sx={styles.navItem} onClick={() => {props.setPage(page.id)}}>{page.title}</Button>
+              <Button sx={{...styles.navItem, }} onClick={() => {props.setPage(page.id)}}><Typography sx={{fontWeight: props.activePageIndex == page.id? 'bold' : ""}}>{page.title}</Typography></Button>
             )
           })}
         </Stack>

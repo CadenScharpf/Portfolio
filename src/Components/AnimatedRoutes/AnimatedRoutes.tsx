@@ -54,22 +54,22 @@ export function AnimatedRoutes() {
     const draggedDistance = dragInfo.offset.x;
     const swipeThreshold = 50;
     if (draggedDistance > swipeThreshold) {
-      swipeToItem(1 /* -1 */);
+      swipeToItem(-1);
     } else if (draggedDistance < -swipeThreshold) {
       swipeToItem(1);
     }
   };
 
   const skipToItem = (imageId: number) => {
-    setItemCount([imageId, imageId > activeItemIndex ? 1 : 1/* -1 */]);
+    setItemCount([imageId, imageId > activeItemIndex ? 1 : -1]);
   };
 
   return (
     <AnimatePresence initial={true}>
-      <Nav setPage={skipToItem} />
+      <Nav activePageIndex={activeItemIndex} setPage={skipToItem} />
       <Box
         component={motion.div}
-        key={"page" + activeItemIndex}
+        key={activeItemIndex}
         variants={sliderVariants}
         custom={direction}
         initial="incoming"
