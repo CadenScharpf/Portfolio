@@ -66,8 +66,11 @@ const STYLES: Record<string, SxProps> = {
 
   // Column 2 (right) ----------------------------------------------
   cardFlipMotionWrapper: {
-    borderRadius: "25px",
     p: 3,
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    zIndex: 99,
   },
 
   //Scene 1
@@ -130,9 +133,14 @@ const letsTalkMotionWrapperVariants = {
 };
 
 const column1MotionVariants = {
-  initial: { height: 0, opacity: 0 },
-  animate: { height: "100%", opacity: 1 },
-  exit: { height: 0 },
+  initial: { height: 0,  transition: { duration: 1.5,  }
+},
+  animate: { height: "100%",    transition: { duration: 1.5,  }
+},
+  exit: {
+    height: 0,
+    transition: { duration: 1.5,  },
+  },
 };
 
 export function Home() {
@@ -153,9 +161,8 @@ export function Home() {
           {contactPageState ? (
             <Box
               component={motion.div}
-              id="column1FrontMotionWrapper"
-              className="cardFlipMotionWrapper"
-              key="home-contact"
+              id="home-contact"
+              key="contact"
               variants={column1MotionVariants}
               initial="initial"
               animate="animate"
@@ -170,15 +177,11 @@ export function Home() {
                 close
               </Button>
             </Box>
-          ) : (
+          ) : (<></>)}
+          </AnimatePresence>
             <Box
-              component={motion.div}
-              id="column1BackMotionWrapper"
-              className="cardFlipMotionWrapper"
-              key="homeScene2"
-              variants={column1MotionVariants}
-              exit="exit"
-              sx={{ ...STYLES.cardFlipMotionWrapper }}
+              id="column1MainContent"
+              sx={{ p:3 }}
             >
               <Box
                 id="headshotSm"
@@ -277,8 +280,7 @@ export function Home() {
                 </Box>
               </Box>
             </Box>
-          )}
-        </AnimatePresence>
+        
       </Box>
       <Box
         id="column2"
