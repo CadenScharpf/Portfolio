@@ -29,7 +29,7 @@ const sectionVariants = {
 };
 const sliderTransition = {
   duration: 1,
-  ease: [0.56, 0.03, 0.12, 1.04],
+  /* ease: [0.56, 0.03, 0.12, 1.04], */
 };
 
 export function Resume() {

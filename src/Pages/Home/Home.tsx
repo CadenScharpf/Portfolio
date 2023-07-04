@@ -1,7 +1,7 @@
 import React from "react";
 import { AnimatePresence, MotionStyle, motion } from "framer-motion";
 import { TRANSITION_DURATION } from "../PageStyle";
-import { useTheme, IconButton, Box, SxProps, Button } from "@mui/material";
+import { useTheme, IconButton, Box, SxProps, Button, Link, Grid } from "@mui/material";
 import {} from "framer-motion";
 import LetsTalk from "./letsTalk.png";
 import HeadShot from "./hs.png";
@@ -10,6 +10,8 @@ import { ContentWindow } from "../../Components/ContentWindow";
 import { Carousel } from "./Components";
 import { ITEMS } from "./CarouselItems";
 import { Image } from "@mui/icons-material";
+import EmailIcon from '@mui/icons-material/Email';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 const PHASE_DURATION = 1.5; //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = 1; //!< time it takes for each phase to animate
@@ -66,10 +68,12 @@ const STYLES: Record<string, SxProps> = {
 
   // Column 2 (right) ----------------------------------------------
   cardFlipMotionWrapper: {
-    p: 3,
-    position: 'absolute',
+    position: "absolute",
     top: 0,
-    width: '100%',
+    width: "100%",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     zIndex: 99,
   },
 
@@ -90,6 +94,7 @@ const STYLES: Record<string, SxProps> = {
     maxWidth: "400px",
     border: "2px solid red",
   },
+
   //Scene 2
   slideShowMotionWrapper: {
     position: "relative",
@@ -133,13 +138,11 @@ const letsTalkMotionWrapperVariants = {
 };
 
 const column1MotionVariants = {
-  initial: { height: 0,  transition: { duration: 1.5,  }
-},
-  animate: { height: "100%",    transition: { duration: 1.5,  }
-},
+  initial: { height: 0, transition: { duration: 1 } },
+  animate: { height: "100%", transition: { duration: 1 } },
   exit: {
     height: 0,
-    transition: { duration: 1.5,  },
+    transition: { duration: 1 },
   },
 };
 
@@ -154,9 +157,10 @@ export function Home() {
   const getPhaseDelay = (phase: number): number => {
     return phase * PHASE_DURATION + TRANSITION_DURATION;
   };
+
   return (
     <Box id="container" sx={STYLES.container}>
-      <Box component={motion.div} id="column1" sx={{ ...STYLES.column }}>
+      <Box id="column1" sx={{ ...STYLES.column }}>
         <AnimatePresence mode="wait">
           {contactPageState ? (
             <Box
@@ -167,120 +171,159 @@ export function Home() {
               initial="initial"
               animate="animate"
               exit="exit"
-              sx={{ ...STYLES.cardFlipMotionWrapper, backgroundColor: "#000" }}
+              sx={{ ...STYLES.cardFlipMotionWrapper, backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+              onClick={() => {
+                setContactPageState(false);
+              }}
             >
-              <Button
-                onClick={() => {
-                  setContactPageState(false);
+              <Box
+                sx={{
+                  width: "90%",
+                  maxWidth: "500px",
+                  height: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  backgroundColor: "#555",
+                  borderRadius: "10px",
+                  position: "relative",
+                  overflow: "hidden",
+                  color: "#fff",
+                  border: "3px solid black",
                 }}
               >
-                close
-              </Button>
+                <Button
+                  onClick={() => {
+                    setContactPageState(false);
+                  }}
+                  sx={{ position: "absolute", top: "0", right: "0" }}
+                >
+                  close
+                </Button>
+
+                <Typography variant="h3" sx={{ marginTop: '3rem', marginBottom: '2rem',}}>
+                  Let's Talk
+                </Typography>
+
+
+                  <Box sx={{display: 'flex'}}>
+                    <EmailIcon sx={{paddingRight: 3}} />
+                    <Typography variant="body1" sx={{  }}>
+                      <Link href="mailto:Caden.Scharpf@icloud.com">Caden.Scharpf@icloud.com</Link>
+                    </Typography>
+                  </Box>
+                  <Box sx={{display: 'flex', }}>
+                    <ContactPhoneIcon sx={{paddingRight: 3}} />
+                    <Typography variant="body1" sx={{  }}>
+                      <Link href="tel:480-326-4178">+1 (480) 326-4178</Link>
+                    </Typography>
+                  </Box>
+
+
+              </Box>
             </Box>
-          ) : (<></>)}
-          </AnimatePresence>
+          ) : (
+            <></>
+          )}
+        </AnimatePresence>
+        <Box id="column1MainContent" sx={{ p: 3 }}>
+          <Box
+            id="headshotSm"
+            component={motion.img}
+            initial={{ display: "none", opacity: 0, width: "0" }}
+            animate={{ display: "", opacity: 1, width: "25%" }}
+            transition={{
+              delay: getPhaseDelay(4),
+              duration: PHASE_ANIMATION_DURATION,
+            }}
+            src={HeadShot}
+            sx={STYLES.headshotSm}
+          />
+          <Box
+            id="titleMotionWrapper"
+            component={motion.div}
+            style={{ margin: 0, padding: 0, color: "#000" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: getPhaseDelay(0),
+              duration: PHASE_ANIMATION_DURATION,
+            }}
+          >
+            <Typography id="title" variant="h1">
+              Caden
+              <br />
+              Scharpf
+            </Typography>
+          </Box>
+          <Box
+            component={motion.div}
+            id="subtitleMotionWrapper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: getPhaseDelay(1),
+              duration: PHASE_ANIMATION_DURATION,
+            }}
+            sx={STYLES.subtitleMotionWrapper}
+          >
+            <Typography id="subtitle" variant="h2">
+              Software Engineer
+            </Typography>
+          </Box>
+          <Box
+            id="descriptionMotionWrapper"
+            component={motion.div}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: getPhaseDelay(2),
+              duration: PHASE_ANIMATION_DURATION,
+            }}
+            sx={STYLES.descriptionMotionWrapper}
+          >
+            <Typography id="description" variant="body1">
+              Software Engineer with 2+ years of professional full stack
+              development and a solid foundation in building scalable
+              applications.
+            </Typography>
+          </Box>
+          <Box id="letsTalkRowContainer" sx={STYLES.letsTalkRowContainer}>
             <Box
-              id="column1MainContent"
-              sx={{ p:3 }}
+              id="letsTalkMotionWrapper"
+              component={motion.div}
+              variants={letsTalkMotionWrapperVariants}
+              initial="initial"
+              animate="animate"
+              transition={{
+                delay: getPhaseDelay(3),
+                duration: 2,
+                type: "spring",
+                bounce: 0.8,
+              }}
+              sx={STYLES.letsTalkMotionWrapper}
             >
-              <Box
-                id="headshotSm"
-                component={motion.img}
-                initial={{ display: "none", opacity: 0, width: "0" }}
-                animate={{ display: "", opacity: 1, width: "25%" }}
-                transition={{
-                  delay: getPhaseDelay(4),
-                  duration: PHASE_ANIMATION_DURATION,
-                }}
-                src={HeadShot}
-                sx={STYLES.headshotSm}
-              />
-              <Box
-                id="titleMotionWrapper"
-                component={motion.div}
-                style={{ margin: 0, padding: 0, color: "#000" }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: getPhaseDelay(0),
-                  duration: PHASE_ANIMATION_DURATION,
+              <IconButton
+                onClick={() => {
+                  setContactPageState(true);
                 }}
               >
-                <Typography id="title" variant="h1">
-                  Caden
-                  <br />
-                  Scharpf
-                </Typography>
-              </Box>
-              <Box
-                component={motion.div}
-                id="subtitleMotionWrapper"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: getPhaseDelay(1),
-                  duration: PHASE_ANIMATION_DURATION,
-                }}
-                sx={STYLES.subtitleMotionWrapper}
-              >
-                <Typography id="subtitle" variant="h2">
-                  Software Engineer
-                </Typography>
-              </Box>
-              <Box
-                id="descriptionMotionWrapper"
-                component={motion.div}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: getPhaseDelay(2),
-                  duration: PHASE_ANIMATION_DURATION,
-                }}
-                sx={STYLES.descriptionMotionWrapper}
-              >
-                <Typography id="description" variant="body1">
-                  Software Engineer with 2+ years of professional full stack
-                  development and a solid foundation in building scalable
-                  applications.
-                </Typography>
-              </Box>
-              <Box id="letsTalkRowContainer" sx={STYLES.letsTalkRowContainer}>
-                <Box
-                  id="letsTalkMotionWrapper"
-                  component={motion.div}
-                  variants={letsTalkMotionWrapperVariants}
+                <motion.img
+                  variants={letsTalkVariants}
                   initial="initial"
                   animate="animate"
+                  whileHover=""
                   transition={{
                     delay: getPhaseDelay(3),
-                    duration: 2,
-                    type: "spring",
-                    bounce: 0.8,
+                    duration: PHASE_ANIMATION_DURATION,
                   }}
-                  sx={STYLES.letsTalkMotionWrapper}
-                >
-                  <IconButton
-                    onClick={() => {
-                      setContactPageState(true);
-                    }}
-                  >
-                    <motion.img
-                      variants={letsTalkVariants}
-                      initial="initial"
-                      animate="animate"
-                      whileHover=""
-                      transition={{
-                        delay: getPhaseDelay(3),
-                        duration: PHASE_ANIMATION_DURATION,
-                      }}
-                      src={LetsTalk}
-                      style={{ width: "60px" }}
-                    />
-                  </IconButton>
-                </Box>
-              </Box>
+                  src={LetsTalk}
+                  style={{ width: "60px" }}
+                />
+              </IconButton>
             </Box>
-        
+          </Box>
+        </Box>
       </Box>
       <Box
         id="column2"

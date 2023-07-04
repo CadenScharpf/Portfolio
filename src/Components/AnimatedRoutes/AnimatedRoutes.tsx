@@ -19,7 +19,8 @@ import { LayoutContext } from "../../Context";
 
 const GRADIENT_COLOR_1 = "blue";
 const GRADIENT_COLOR_2 = "red";
-const BORDER_COLOR = `linear-gradient(white, white) padding-box, linear-gradient(to right, ${GRADIENT_COLOR_1}, ${GRADIENT_COLOR_2}) border-box`;
+const BORDER_COLOR = `linear-gradient(white, white) padding-box, linear-gradient(to right, black, black) border-box`;
+const BORDER_COLOR_GRAD = `linear-gradient(white, white) padding-box, linear-gradient(to right, ${GRADIENT_COLOR_1}, ${GRADIENT_COLOR_2}) border-box`;
 
 const sliderVariants: Variants = {
   incoming: (direction: number) => ({
@@ -37,7 +38,6 @@ const sliderVariants: Variants = {
 
 const sliderTransition = {
   duration: 1,
-  ease: [0.56, 0.03, 0.12, 1.04],
 };
 
 export function AnimatedRoutes() {
