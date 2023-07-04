@@ -66,4 +66,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-//!< time between triggerings of each phase
+//!< The duration of the content window expansion animation
