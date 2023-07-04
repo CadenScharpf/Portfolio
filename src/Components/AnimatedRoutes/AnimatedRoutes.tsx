@@ -1,46 +1,36 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
-import { Home, Resume, Works } from '../../Pages';
-import { AnimatePresence, motion, PanInfo, Variant, Variants } from 'framer-motion';
-import { WebApplications } from '../../Pages/Works/Components';
-import { BackendApps } from '../../Pages/Works/Components/BackendApps';
-import { TestPage } from '../../Pages/TestPage/TestPage';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ContentWindow } from '../ContentWindow';
-import { Box, Container, Typography } from '@mui/material';
-import { wrap } from '@popmotion/popcorn';
+import { Route, Routes, useLocation } from "react-router-dom";
+import { Home, PAGES, Resume, Works } from "../../Pages";
+import {
+  AnimatePresence,
+  motion,
+  PanInfo,
+  Variant,
+  Variants,
+} from "framer-motion";
+import { WebApplications } from "../../Pages/Works/Components";
+import { BackendApps } from "../../Pages/Works/Components/BackendApps";
+import { TestPage } from "../../Pages/TestPage/TestPage";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { ContentWindow } from "../ContentWindow";
+import { Box, Container, Typography } from "@mui/material";
+import { wrap } from "@popmotion/popcorn";
+import { Nav } from "../Nav";
+import { LayoutContext } from "../../Context";
 
-const GRADIENT_COLOR_1 = 'black'
-const GRADIENT_COLOR_2 = 'black'
-const BORDER_COLOR = `linear-gradient(white, white) padding-box, linear-gradient(to right, ${GRADIENT_COLOR_1}, ${GRADIENT_COLOR_2}) border-box`
-
-interface Page {
-  title: string;
-  path: string;
-  component: React.ComponentType;
-}
-
-const PAGES: Page[] = [
-  {title: 'Home', path: '/', component: Home },
-  {title: 'Works', path: '/works', component: Works },
-  {title: 'Resume', path: '/resume', component: Resume },
-];
-
-const navVariants: Variants = {
-  initial: { width: 0 },
-  animate: { width: 20, boxShadow: '0 0 5px black', transition: { delay: .5, type: 'spring', bounce: .4} },
-  exit: { width: 0 },
-  hover: { width: 30, boxShadow: '0 0 7px 0px black',  transition: {  type: 'spring', bounce: .5}, },
-}
+const GRADIENT_COLOR_1 = "blue";
+const GRADIENT_COLOR_2 = "red";
+const BORDER_COLOR = `linear-gradient(white, white) padding-box, linear-gradient(to right, black, black) border-box`;
+const BORDER_COLOR_GRAD = `linear-gradient(white, white) padding-box, linear-gradient(to right, ${GRADIENT_COLOR_1}, ${GRADIENT_COLOR_2}) border-box`;
 
 const sliderVariants: Variants = {
   incoming: (direction: number) => ({
-    x: direction > 0 ? '100%' : '-100%',
+    x: direction > 0 ? "100%" : "-100%",
     scale: 1.2,
     opacity: 0,
   }),
   active: { x: 0, scale: 1, opacity: 1 },
   exit: (direction: number) => ({
-    x: direction > 0 ? '-100%' : '100%',
+    x: direction > 0 ? "-100%" : "100%",
     scale: 1,
     opacity: 0,
   }),
@@ -48,11 +38,12 @@ const sliderVariants: Variants = {
 
 const sliderTransition = {
   duration: 1,
-  ease: [0.56, 0.03, 0.12, 1.04],
 };
 
 export function AnimatedRoutes() {
-  const [[itemCount, direction], setItemCount] = useState<[number, number]>([0, 1]);
+  const [[itemCount, direction], setItemCount] = useState<[number, number]>([
+    0, 1,
+  ]);
   const activeItemIndex = wrap(0, PAGES.length, itemCount);
 
   const swipeToItem = (swipeDirection: number) => {
@@ -75,9 +66,10 @@ export function AnimatedRoutes() {
 
   return (
     <AnimatePresence initial={true}>
+      <Nav activePageIndex={activeItemIndex} setPage={skipToItem} />
       <Box
         component={motion.div}
-        key={"page" + activeItemIndex}
+        key={activeItemIndex}
         variants={sliderVariants}
         custom={direction}
         initial="incoming"
@@ -85,93 +77,36 @@ export function AnimatedRoutes() {
         exit="exit"
         transition={sliderTransition}
         drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
         onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'row',
-          padding: '1rem',
-          alignItems: 'center',
-          height: '90%',
-          margin: '1rem',
-          position: 'absolute',
-          width: '90%',
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "row",
+          padding: "1rem",
+          alignItems: "center",
+          margin: "1rem",
+          position: "absolute",
+          top: LayoutContext.navHeight,
+          bottom: 0,
+          width: "90%",
           px: 0,
-          
         }}
       >
-        <Box 
-        component={motion.div}
-        key={"leftNav" + activeItemIndex}
-        variants={navVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ type: 'spring', bounce: 0.5}}
-        whileHover="hover"
-        onClick={() => swipeToItem(-1)}
-        sx={{
-          overflow: 'hidden',
-          height: '100%', 
-          width: '25px',
-          background: `repeating-linear-gradient(to right, grey, white 4px)`, 
-          border: '4px solid transparent',
-          borderWidth: '2px 0 2px 1px',
-          borderRadius: '25px 0 0 25px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          
-        }}>
-          <Box sx={{transform: 'rotate(-90deg)', background: 'rgba(255, 255, 255, 0.5)', borderRadius: 3, px: 5, height: '2rem'}}>
-            <Typography  variant='h6' sx={{ fontWeight: 'bold'}}>
-              {PAGES[wrap(0, PAGES.length, itemCount-1)].title}
-            </Typography>
-
-          </Box>
-        </Box>
-        <Box sx={{
-          width: '95%', 
-          height: '100%', 
-          border: '4px solid transparent',
-          borderWidth: '2px 2.5px 2px 2.5px',
-          background: BORDER_COLOR,
-          boxShadow: '0px 0px 5px 0px black',
-          overflow: 'scroll',
-          maxWidth: '1500px'
-        }}>
-        {React.createElement(PAGES[activeItemIndex].component)}
-        </Box>
-        <Box 
-        component={motion.div}
-        key={"rightNav" + activeItemIndex}
-        variants={navVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ type: 'spring', bounce: 0.5}}
-        whileHover="hover"
-        onClick={() => swipeToItem(1)}
-        sx={{
-          height: '100%', 
-          border: '4px solid transparent',
-          borderWidth: '2px 1px 2px 0px',
-          borderRadius: '0 25px 25px 0',
-          background: `repeating-linear-gradient(to right, grey, white 4px)`, 
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          overflow: 'hidden',
-          /* boxShadow: '0px 0 5px 0px black', */
-        }}>
-          <Box sx={{transform: 'rotate(90deg)', background: 'rgba(255, 255, 255, 0.5)', borderRadius: 3, px: 5, height: '2rem'}}>
-
-          <Typography variant='h6' sx={{  fontWeight: 'bold'}}>
-            {PAGES[wrap(0, PAGES.length, itemCount+1)].title}
-          </Typography>
-          </Box>
-          
+        <Box
+          className="content-window"
+          sx={{
+            width: "95%",
+            height: "100%",
+            border: "4px solid transparent",
+            borderWidth: "5px",
+            borderRadius: "25px",
+            background: BORDER_COLOR,
+            boxShadow: "0px 0px 5px 0px black",
+            overflow: "scroll",
+            maxWidth: "1700px",
+          }}
+        >
+          {React.createElement(PAGES[activeItemIndex].component)}
         </Box>
       </Box>
     </AnimatePresence>

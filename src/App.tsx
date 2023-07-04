@@ -31,8 +31,8 @@ const APP_STYLE: React.CSSProperties = {
 }
 
 const BODY_STYLE: React.CSSProperties = {
-  top: `${LayoutContext.navHeight}px`,
-  height: `calc(100vh - ${LayoutContext.navHeight}px)`, 
+  top: 0,
+  height: '100%', 
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
@@ -46,7 +46,6 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
           <div className="App" style={APP_STYLE}>
-            <Nav />
             <div className="body" style={BODY_STYLE}>
             <SocialStack /> 
             <AnimatedRoutes />
