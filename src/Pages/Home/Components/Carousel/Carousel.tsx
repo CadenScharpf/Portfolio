@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, Stack } from "@mui/material";
+import { Box, Grid, IconButton, Stack, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
@@ -25,9 +25,7 @@ const sliderVariants = {
 };
 
 const sliderTransition = {
-  duration: 1,
-  /* ease: [0.56, 0.03, 0.12, 1.04], */
-};
+  duration: 1};
 
 interface ICarouselProps {
   data: CarouselItemProps[];
@@ -35,6 +33,7 @@ interface ICarouselProps {
 }
 
 export function Carousel(props: ICarouselProps) {
+  const theme = useTheme();
   const [[itemCount, direction], setItemCount] = useState([0, 1]);
   const activeItemIndex = wrap(0, ITEMS.length, itemCount);
 
@@ -92,19 +91,17 @@ export function Carousel(props: ICarouselProps) {
             display: "flex-column",
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: "25px",
-            border: "2.5px solid black",
             position: "absolute",
             left: 0,
             right: 0,
             marginLeft: "auto",
             marginRight: "auto",
-            background: "white",
             maxWidth: "850px",
             overflow: "hidden",
           }}
         >
           <CarouselItem {...props.data[activeItemIndex]} />
+        </Box>
           <Stack
             direction="row"
             sx={{
@@ -147,7 +144,6 @@ export function Carousel(props: ICarouselProps) {
             </IconButton>
 
           </Stack>
-        </Box>
       </AnimatePresence>
     </>
   );

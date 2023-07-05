@@ -35,7 +35,7 @@ const sliderTransition = {
 export function Resume() {
   const theme = useTheme();
   const [section, setSection] = React.useState("Education");
-  const [[itemCount, direction], setItemCount] = useState([0, 1]);
+  const [[itemCount, direction], setItemCount] = useState([2, 1]);
   const activeItemIndex = wrap(0, Object.keys(SECTIONS).length, itemCount);
 
   const swipeToItem = (swipeDirection: number) => {
@@ -57,7 +57,7 @@ export function Resume() {
       paddingRight: "3px",
       width: "120px" /* Need a specific value to work */,
       zIndex: 5,
-      background: "rgba(255, 255, 255, 0.5)",
+      background: theme.palette.primary.main,
       border: "2.5px solid black",
       fontWeight: "bold",
     },
@@ -68,6 +68,7 @@ export function Resume() {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+      background: theme.palette.background.paper,
     },
     section: {
       position: "absolute",

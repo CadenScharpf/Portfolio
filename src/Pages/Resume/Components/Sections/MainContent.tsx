@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, ThemeProvider, Typography, useTheme } from "@mui/material";
 import React from "react";
 
 interface Props {
@@ -8,32 +8,60 @@ interface Props {
   title?: string;
 }
 
+const titleHeight = 55;
+const dividerHeight = 2;
+
 export function MainContent(props: Props) {
+  const theme = useTheme();
   return (
     <Box
       sx={{
-        background: "rgba(255, 255, 255, 0.8)",
+        background: theme.palette.background.default,
         width: "80%",
         maxWidth: "800px",
         height: "75%",
         maxHeight: 500,
         borderRadius: "25px",
-        border: "2.5px solid black ",
+        border: `3px solid ${theme.palette.primary.main}`,
         my: props.addVerticalMargin ? "60px" : 0,
+
         overflow: "scroll",
         textAlign: "center",
-        padding: "0 10px 10px 10px",
+        padding: 0,
         ...props.style,
+        positon: "relative",
+        
       }}
     >
-      <div style={{ width: "100%", border: "2px solid black", borderWidth: '0px 0px 2px 0px', marginBottom: '10px'}}>
+      <Box
+        sx={{
+          width: "100%",
+          height: titleHeight,
+          border: "2px solid black",
+          borderWidth: `0px 0px ${dividerHeight}px 0px`,
+          background: `${theme.palette.primary.main}dd`,
+          color: theme.palette.primary.contrastText,
+        }}
+      >
         {props.title && (
           <Typography variant="h3" sx={{ marginBottom: 1 }}>
             {props.title}
           </Typography>
         )}
-      </div>
-      {props.children}
+      </Box>
+
+      <Box
+        sx={{
+          width: "100%",
+          height: `calc(100% - ${titleHeight + dividerHeight}px)`,
+          overflow: "scroll",
+          /*  */
+          alignItems: "center",
+
+        }}
+      >
+        {props.children}
+      </Box>
     </Box>
   );
 }

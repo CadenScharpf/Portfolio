@@ -1,21 +1,17 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import { Home, PAGES, Resume, Works } from "../../Pages";
+import { PAGES } from "../../Pages";
+import { AnimatePresence, motion, PanInfo, Variants } from "framer-motion";
+import React, { createContext, useState } from "react";
 import {
-  AnimatePresence,
-  motion,
-  PanInfo,
-  Variant,
-  Variants,
-} from "framer-motion";
-import { WebApplications } from "../../Pages/Works/Components";
-import { BackendApps } from "../../Pages/Works/Components/BackendApps";
-import { TestPage } from "../../Pages/TestPage/TestPage";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { ContentWindow } from "../ContentWindow";
-import { Box, Container, Typography } from "@mui/material";
+  Box,
+  createTheme,
+  keyframes,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@mui/material";
 import { wrap } from "@popmotion/popcorn";
 import { Nav } from "../Nav";
-import { LayoutContext } from "../../Context";
+import { COLORS } from "../../colors";
+import { LockPerson } from "@mui/icons-material";
 
 const GRADIENT_COLOR_1 = "blue";
 const GRADIENT_COLOR_2 = "red";
@@ -40,10 +36,76 @@ const sliderTransition = {
   duration: 1,
 };
 
+const defaultLayoutParams = {
+  isDarkMode: false,
+  navHeight: 64,
+};
+
+export const LayoutContext = createContext({
+  isDarkMode: false,
+  navHeight: 64,
+});
+
+const darkTheme = responsiveFontSizes(
+  createTheme({
+    palette: {
+      text: {
+        primary: '#f8f8f2',
+        secondary:'#94a3b8',
+      },
+      background: {
+        default: COLORS.dracula.background.main,
+        paper: COLORS.dracula.foreground.main,
+      },
+      primary: {
+        main: COLORS.dracula.green.main,
+      },
+      secondary: {
+        main: COLORS.dracula.orange.main,
+
+      },
+      info: {
+        main: COLORS.dracula.cyan.main,
+      },
+
+      
+    },
+  })
+);
+const lightTheme = responsiveFontSizes(
+  createTheme({
+    palette: {
+      text: {
+        primary: "#000",
+        secondary: "#134e4a",
+      },
+      background: {
+        default: "#fff",
+        paper: "#fff",
+      },
+    },
+    
+  })
+);
+
+const gradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
 export function AnimatedRoutes() {
   const [[itemCount, direction], setItemCount] = useState<[number, number]>([
-    0, 1,
+    2, 1,
   ]);
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const activeItemIndex = wrap(0, PAGES.length, itemCount);
 
   const swipeToItem = (swipeDirection: number) => {
@@ -65,50 +127,93 @@ export function AnimatedRoutes() {
   };
 
   return (
-    <AnimatePresence initial={true}>
-      <Nav activePageIndex={activeItemIndex} setPage={skipToItem} />
-      <Box
-        component={motion.div}
-        key={activeItemIndex}
-        variants={sliderVariants}
-        custom={direction}
-        initial="incoming"
-        animate="active"
-        exit="exit"
-        transition={sliderTransition}
-        drag="x"
-        onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "row",
-          padding: "1rem",
-          alignItems: "center",
-          margin: "1rem",
-          position: "absolute",
-          top: LayoutContext.navHeight,
-          bottom: 0,
-          width: "90%",
-          px: 0,
-        }}
-      >
+    <LayoutContext.Provider
+      value={{
+        isDarkMode: isDarkMode,
+        navHeight: defaultLayoutParams.navHeight,
+      }}
+    >
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <Box
-          className="content-window"
           sx={{
-            width: "95%",
-            height: "100%",
-            border: "4px solid transparent",
-            borderWidth: "5px",
-            borderRadius: "25px",
-            background: BORDER_COLOR,
-            boxShadow: "0px 0px 5px 0px black",
-            overflow: "scroll",
-            maxWidth: "1700px",
+            position: "absolute",
+            top: 0,
+            height: "100vh",
+            width: "100vw",
+            background: isDarkMode ? "#282a36" : "white",
           }}
         >
-          {React.createElement(PAGES[activeItemIndex].component)}
+          <AnimatePresence initial={true}>
+            <Nav
+              setIsDarkMode={setIsDarkMode}
+              activePageIndex={activeItemIndex}
+              setPage={skipToItem}
+            />
+
+            <Box
+              component={motion.div}
+              key={activeItemIndex}
+              variants={sliderVariants}
+              custom={direction}
+              initial="incoming"
+              animate="active"
+              exit="exit"
+              transition={sliderTransition}
+              drag="x"
+              onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "row",
+                padding: "1rem",
+                alignItems: "center",
+                margin: "1rem",
+                position: "absolute",
+                top: defaultLayoutParams.navHeight,
+                bottom: 0,
+                width: "100%",
+                m: 0,
+                px: 0,
+              }}
+            >
+              <Box
+                className="gradient-border"
+                sx={{
+                  backgroundImage:
+                    isDarkMode? 
+                    `linear-gradient(45deg, ${COLORS.dracula.cyan.main}, ${COLORS.dracula.pink.main}, ${COLORS.dracula.yellow.main}, ${COLORS.dracula.green.main}, ${COLORS.dracula.red.main}, ${COLORS.dracula.pink.main}, ${COLORS.dracula.yellow.main}, ${COLORS.dracula.purple.main})` :
+                    `linear-gradient(45deg, #000 , #000)`,
+                  backgroundSize: "400% 400%",
+                  animation: `${gradientAnimation} 10s ease infinite`,
+                  width: "90%",
+                  height: "95%",
+                  display: "flex",
+                  justifyContent: "center",
+                  borderRadius: "25px",
+                  boxShadow: "0px 0px 5px 0px black",
+                }}
+              >
+                <Box
+                  id="content-window"
+                  sx={{
+                    width: "100%",
+                     border: "4px solid transparent",
+                     borderRadius: "25px",
+                  /*borderWidth: "5px",
+                  background: BORDER_COLOR, 
+                  boxShadow: "0px 0px 5px 0px black",*/
+
+                    overflow: "scroll",
+                    maxWidth: "1700px",
+                  }}
+                >
+                  {React.createElement(PAGES[activeItemIndex].component)}
+                </Box>
+              </Box>
+            </Box>
+          </AnimatePresence>
         </Box>
-      </Box>
-    </AnimatePresence>
+      </ThemeProvider>
+    </LayoutContext.Provider>
   );
 }

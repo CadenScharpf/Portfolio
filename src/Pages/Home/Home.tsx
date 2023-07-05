@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AnimatePresence, MotionStyle, motion } from "framer-motion";
 import { TRANSITION_DURATION } from "../PageStyle";
 import { useTheme, IconButton, Box, SxProps, Button, Link, Grid } from "@mui/material";
@@ -12,6 +12,7 @@ import { ITEMS } from "./CarouselItems";
 import { Image } from "@mui/icons-material";
 import EmailIcon from '@mui/icons-material/Email';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import { LayoutContext } from "../../Components/AnimatedRoutes/AnimatedRoutes";
 
 const PHASE_DURATION = 1.5; //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = 1; //!< time it takes for each phase to animate
@@ -75,6 +76,7 @@ const STYLES: Record<string, SxProps> = {
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 99,
+    background: "rgba(255, 255, 255, 0.5)",
   },
 
   //Scene 1
@@ -104,8 +106,7 @@ const STYLES: Record<string, SxProps> = {
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
-    background: "#282a36",
+    justifyContent: "center",    
   },
 };
 
@@ -129,7 +130,7 @@ const letsTalkMotionWrapperVariants = {
   animate: {
     width: "80px",
     height: "80px",
-    backgroundColor: "#de1b48",
+    backgroundColor: "#ff5555",
     borderStyle: "solid",
   },
   hover: {
@@ -138,17 +139,18 @@ const letsTalkMotionWrapperVariants = {
 };
 
 const column1MotionVariants = {
-  initial: { height: 0, transition: { duration: 1 } },
-  animate: { height: "100%", transition: { duration: 1 } },
+  initial: { height: '100%', opacity: 0, transition: { duration: .75 } },
+  animate: { height: "100%", opacity: 1, transition: { duration: .75 } },
   exit: {
-    height: 0,
-    transition: { duration: 1 },
+    height: '100%', opacity: 0,
+    transition: { duration: .75 },
   },
 };
 
 export function Home() {
   const theme = useTheme();
-  const [contactPageState, setContactPageState] = React.useState(false);
+  const LCP = useContext(LayoutContext);
+    const [contactPageState, setContactPageState] = React.useState(false);
 
   const toggleContactPageState = () => {
     setContactPageState(!contactPageState);
@@ -159,8 +161,8 @@ export function Home() {
   };
 
   return (
-    <Box id="container" sx={STYLES.container}>
-      <Box id="column1" sx={{ ...STYLES.column }}>
+    <Box id="container" sx={{...STYLES.container, background: theme.palette.background.paper}}>
+      <Box id="column1" sx={{ ...STYLES.column,  }}>
         <AnimatePresence mode="wait">
           {contactPageState ? (
             <Box
@@ -171,7 +173,7 @@ export function Home() {
               initial="initial"
               animate="animate"
               exit="exit"
-              sx={{ ...STYLES.cardFlipMotionWrapper, backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+              sx={{ ...STYLES.cardFlipMotionWrapper,  }}
               onClick={() => {
                 setContactPageState(false);
               }}
@@ -184,7 +186,7 @@ export function Home() {
                   display: "flex",
                   alignItems: "center",
                   flexDirection: "column",
-                  backgroundColor: "#555",
+                  backgroundColor: "#44475a",
                   borderRadius: "10px",
                   position: "relative",
                   overflow: "hidden",
@@ -242,7 +244,7 @@ export function Home() {
           <Box
             id="titleMotionWrapper"
             component={motion.div}
-            style={{ margin: 0, padding: 0, color: "#000" }}
+            sx={{ margin: 0, padding: 0, color: theme.palette.text.primary /* LCP.isDarkMode? "#50fa7b":"#000"  */}}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -250,7 +252,7 @@ export function Home() {
               duration: PHASE_ANIMATION_DURATION,
             }}
           >
-            <Typography id="title" variant="h1">
+            <Typography id="title" variant="h1" >
               Caden
               <br />
               Scharpf
@@ -267,7 +269,7 @@ export function Home() {
             }}
             sx={STYLES.subtitleMotionWrapper}
           >
-            <Typography id="subtitle" variant="h2">
+            <Typography id="subtitle" variant="h2" sx={{color: theme.palette.text.secondary}}>
               Software Engineer
             </Typography>
           </Box>
@@ -282,7 +284,7 @@ export function Home() {
             }}
             sx={STYLES.descriptionMotionWrapper}
           >
-            <Typography id="description" variant="body1">
+            <Typography id="description" variant="body1" sx={{color: LCP.isDarkMode? "#f8f8f2" : "black"}}>
               Software Engineer with 2+ years of professional full stack
               development and a solid foundation in building scalable
               applications.
@@ -301,7 +303,7 @@ export function Home() {
                 type: "spring",
                 bounce: 0.8,
               }}
-              sx={STYLES.letsTalkMotionWrapper}
+              sx={{...STYLES.letsTalkMotionWrapper, }}
             >
               <IconButton
                 onClick={() => {
@@ -336,6 +338,7 @@ export function Home() {
             lg: "flex",
             xl: "flex",
           },
+          
         }}
       >
         <Box
@@ -365,7 +368,7 @@ export function Home() {
           }}
           sx={{ ...STYLES.slideShowMotionWrapper }}
         >
-          <Carousel data={ITEMS} style={{ width: "90%", height: "80%" }} />
+          <Carousel data={ITEMS} style={{ width: "100%", height: "80%" }} />
         </Box>
       </Box>
     </Box>

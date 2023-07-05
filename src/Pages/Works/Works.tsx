@@ -15,8 +15,8 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: "1rem",
   },
   navItem: {
-    zIndex: 9999999,
-    padding: "1vh 1vh 1vh 1vh",
+/*     zIndex: 9999999,
+ */    padding: "1vh 1vh 1vh 1vh",
     textDecoration: "none",
     color: "#000",
     fontWeight: "600",

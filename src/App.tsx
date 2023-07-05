@@ -7,18 +7,11 @@ import { Nav } from './Components';
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import SouthIcon from '@mui/icons-material/South';
-import { LayoutContext } from './Context';
 import { Stack } from '@mui/material';
 import SocialStack from './Components/SocialStack/SocialStack';
 import { ContentWindow } from './Components/ContentWindow';
 
-const theme = responsiveFontSizes(createTheme({
-  palette: {
-    text: {
 
-    }
-  },
-}))
 
 const APP_STYLE: React.CSSProperties = {
   position: 'relative',
@@ -44,14 +37,13 @@ const BODY_STYLE: React.CSSProperties = {
 function App() {
   return (
     <Router>
-      <ThemeProvider theme={theme}>
+
           <div className="App" style={APP_STYLE}>
             <div className="body" style={BODY_STYLE}>
             <SocialStack /> 
             <AnimatedRoutes />
             </div>
           </div>
-      </ThemeProvider>
     </Router>
   );
 }
