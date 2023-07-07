@@ -12,30 +12,26 @@ import GitIcon from "./Assets/icons/other/git.png";
 import BashIcon from "./Assets/icons/other/bash.png";
 import NginxIcon from "./Assets/icons/other/nginx.png";
 import { motion } from "framer-motion";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import { MainContent } from "./MainContent";
+import ConstructionIcon from "@mui/icons-material/Construction";
+import ICONS from "../../../../Icons";
 
-const ICONS: Record<string, string[]> = {
-  frontend: [
-    "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-    "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/css/css.png",
-    "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
-    MuiIcon,
-    ReactIcon,
-  ],
+const TECH_ICONS: Record<string, string[]> = {
+  frontend: [ICONS.js, ICONS.css, ICONS.html, ICONS.mui, ICONS.react],
   backend: [
-    NodeIcon,
-    FlaskIcon,
-    SpringIcon,
-    SqlIcon,
-    "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/typescript/typescript.png",
-    "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/python/python.png",
-    "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/java/java.png",
+    ICONS.node,
+    ICONS.flask,
+    ICONS.spring,
+    ICONS.sql,
+    ICONS.ts,
+    ICONS.python,
+    ICONS.java,
   ],
-  other: [AwsIcon, DockerIcon, GitIcon, BashIcon, NginxIcon],
+  other: [ICONS.aws, ICONS.docker, ICONS.git, ICONS.bash, ICONS.nginx],
 };
 interface Props {
-  addVerticalMargin?: boolean;
+  showTitle?: boolean;
 }
 export function Technologies(props: Props) {
   const theme = useTheme();
@@ -55,13 +51,13 @@ export function Technologies(props: Props) {
       display: "flex",
       flexDirection: "column",
       border: `3px solid ${theme.palette.primary.main}`,
-      padding: 10,
       color: "black",
       marginTop: 2,
       marginBottom: 2,
       width: "90%",
-      maxWidth: "600px",
-      background: "white",
+      maxWidth: "800px",
+      background: theme.palette.background.default,
+      padding: 3,
     },
     icon: {
       height: 30,
@@ -87,90 +83,96 @@ export function Technologies(props: Props) {
   };
   return (
     <Box
+      className="technologies"
       sx={{
-        ...SECTION_STYLE,
-        textAlign: "center",
-        /* backgroundImage: `url("https://www.asu.edu/sites/default/files/2022-03/210618-CollegeSchool-HeroTempe.jpeg")`,
-        backgroundPosition: "center",
-        backgroundSize: "fill", */
+        textAlign: "left",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        overflow: "scroll",
+        alignItems: "center",
+        px: 2,
       }}
     >
-      <MainContent title="Tech I Use">
-        <Box
-          sx={{
-            textAlign: "left",
+      {props.showTitle && (
+        <>
+          <ConstructionIcon
+            sx={{
+              fontSize: 100,
+              color: theme.palette.text.primary,
+              marginTop: 3,
+            }}
+          />
+          <Typography
+            variant="h3"
+            sx={{ color: theme.palette.text.primary, marginBottom: 3 }}
+          >
+            Technologies
+          </Typography>
+        </>
+      )}
+      <div
+        style={{
+          ...styles.techBox,
+          background: theme.palette.background.default,
+          color: theme.palette.text.primary,
+        }}
+      >
+        <p style={{ margin: 0 }}>
+          These are, but not limited to, the tech I use for building client-side
+          applications
+        </p>
+        <div
+          style={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            p: 2,
+            flexWrap: "wrap",
+            justifyContent: "left",
+            backgroundColor: "transparent",
           }}
         >
-          <div
-            style={{
-              ...styles.techBox,
-              background: theme.palette.background.paper,
-              color: theme.palette.text.primary,
-            }}
-          >
-            <p style={{ margin: 0 }}>
-              These are, but not limited to, the tech I use for building
-              client-side applications
-            </p>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "left",
-                backgroundColor: "transparent",
-              }}
-            >
-              {iconMap(ICONS.frontend)}
-            </div>
-          </div>
-          <div
-            style={{
-              ...styles.techBox,
-              background: theme.palette.background.paper,
-              color: theme.palette.text.primary,
-            }}
-          >
-            <p style={{ margin: 0 }}>
-              These are, but not limited to, the tech I use for building fast
-              and scalable backend applications
-            </p>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "left",
-                backgroundColor: "transparent",
-              }}
-            >
-              {iconMap(ICONS.backend)}
-            </div>
-          </div>
-          <div
-            style={{
-              ...styles.techBox,
-              background: theme.palette.background.paper,
-              color: theme.palette.text.primary,
-            }}
-          >
-            <p style={{ margin: 0 }}>Others...and more!</p>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "left",
-                backgroundColor: "transparent",
-              }}
-            >
-              {iconMap(ICONS.other)}
-            </div>
-          </div>
-        </Box>
-      </MainContent>
+          {iconMap(TECH_ICONS.frontend)}
+        </div>
+      </div>
+      <div
+        style={{
+          ...styles.techBox,
+          color: theme.palette.text.primary,
+        }}
+      >
+        <p style={{ margin: 0 }}>
+          These are, but not limited to, the tech I use for building fast and
+          scalable backend applications
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "left",
+            backgroundColor: "transparent",
+          }}
+        >
+          {iconMap(TECH_ICONS.backend)}
+        </div>
+      </div>
+      <div
+        style={{
+          ...styles.techBox,
+          color: theme.palette.text.primary,
+        }}
+      >
+        <p style={{ margin: 0 }}>Others...and more!</p>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "left",
+            backgroundColor: "transparent",
+          }}
+        >
+          {iconMap(TECH_ICONS.other)}
+        </div>
+      </div>
     </Box>
   );
 }

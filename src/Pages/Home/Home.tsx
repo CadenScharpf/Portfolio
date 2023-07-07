@@ -3,7 +3,6 @@ import { AnimatePresence, MotionStyle, motion } from "framer-motion";
 import { TRANSITION_DURATION } from "../PageStyle";
 import { useTheme, IconButton, Box, SxProps, Button, Link, Grid } from "@mui/material";
 import {} from "framer-motion";
-import LetsTalk from "./letsTalk.png";
 import HeadShot from "./hs.png";
 import { Container, Typography } from "@mui/material";
 import { ContentWindow } from "../../Components/ContentWindow";
@@ -13,6 +12,7 @@ import { Image } from "@mui/icons-material";
 import EmailIcon from '@mui/icons-material/Email';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import { LayoutContext } from "../../Components/AnimatedRoutes/AnimatedRoutes";
+import LetsTalk from "../../Components/SVGComponents/LetsTalk";
 
 const PHASE_DURATION = 1.5; //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = 1; //!< time it takes for each phase to animate
@@ -94,7 +94,7 @@ const STYLES: Record<string, SxProps> = {
     borderRadius: "50%",
     width: "100%",
     maxWidth: "400px",
-    border: "2px solid red",
+    
   },
 
   //Scene 2
@@ -239,7 +239,7 @@ export function Home() {
               duration: PHASE_ANIMATION_DURATION,
             }}
             src={HeadShot}
-            sx={STYLES.headshotSm}
+            sx={{...STYLES.headshotSm, border: `3px solid ${theme.palette.primary.main}`}}
           />
           <Box
             id="titleMotionWrapper"
@@ -310,7 +310,7 @@ export function Home() {
                   setContactPageState(true);
                 }}
               >
-                <motion.img
+                <motion.div
                   variants={letsTalkVariants}
                   initial="initial"
                   animate="animate"
@@ -319,9 +319,11 @@ export function Home() {
                     delay: getPhaseDelay(3),
                     duration: PHASE_ANIMATION_DURATION,
                   }}
-                  src={LetsTalk}
                   style={{ width: "60px" }}
-                />
+                >
+
+                  <LetsTalk fill={theme.palette.primary.main}  height="50px"/>
+                </motion.div>
               </IconButton>
             </Box>
           </Box>
@@ -355,7 +357,7 @@ export function Home() {
             component={motion.img}
             alt="Headshot Photo"
             src={HeadShot}
-            sx={STYLES.headshotLg}
+            sx={{...STYLES.headshotLg, border: `3px solid ${theme.palette.primary.main}`}}
           />
         </Box>
         <Box

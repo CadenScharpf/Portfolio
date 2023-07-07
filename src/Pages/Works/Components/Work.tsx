@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, useTheme } from '@mui/material';
 import { CSSProperties } from '@mui/styled-engine-sc';
 import { motion } from 'framer-motion';
 import React from 'react'
@@ -20,7 +20,6 @@ const styles: Record<string, React.CSSProperties> = {
     width: '100%',
     height: '100%',
     opacity: 1,
-    border: '1px solid #000',
     
   },
   img: {
@@ -42,19 +41,19 @@ const styles: Record<string, React.CSSProperties> = {
   },
   overlayButtons: {
     height: '20%', 
-
     width: '100%',
-    
+    display: 'flex',
+    justifyContent : 'space-evenly',
 
   },
   overlayButton: {
-    width: '50%',
-    height: '20%',
+    height: 30,
     margin: '1rem auto 1rem auto',
   }
 }
 
 export function Work(props: iWorkProps) {
+  const theme = useTheme();
 
   const overlayVariants = {
     initial: {
@@ -68,7 +67,7 @@ export function Work(props: iWorkProps) {
   return (
     <motion.div 
       className="work" 
-      style={{ ...styles.work, ...props.containerStyle }}
+      style={{ ...styles.work, ...props.containerStyle, border: `3px solid ${theme.palette.primary.main}`, }}
       whileHover="hover"
       initial="initial"
       >
@@ -81,8 +80,8 @@ export function Work(props: iWorkProps) {
         <h2>{props.title}</h2>
         <div>{props.description}</div>
         <div style={{...styles.overlayButtons}}>
-          {props.site? (<Button href={props.site} variant='text' style={{...styles.overlayButton}}>Live Site</Button>): ''}
-          {props.github? (<Button href={props.github}  variant='text' style={{...styles.overlayButton}}>Source Code</Button>): ''}
+          {props.site? (<Button href={props.site} variant='contained' style={{...styles.overlayButton}}>Live Site</Button>): ''}
+          {props.github? (<Button href={props.github}  variant='contained' style={{...styles.overlayButton}}>Source Code</Button>): ''}
           
         </div>
       </motion.div>

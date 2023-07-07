@@ -16,7 +16,7 @@ import {
   useTheme,
 } from "@mui/material";
 
-import Logo from '../Logo/Logo'
+import Logo from '../SVGComponents/Logo'
 import { AnimatePresence, motion } from "framer-motion";
 import { LayoutContext } from "../../Components/AnimatedRoutes/AnimatedRoutes";
 
@@ -58,7 +58,7 @@ export function Nav(props: iNavProps) {
   return (
     <AppBar className="nav" sx={styles.nav}>
       <Box sx={{  height: '100%', position: 'absolute', left: 0,display: 'flex', alignItems: 'center'  }}>
-        <Logo fill="red"  height="50px"  />
+        <Logo fill={theme.palette.primary.main}  height="50px"  />
         <Box
             className="container"
             sx={{
@@ -141,9 +141,11 @@ export function Nav(props: iNavProps) {
                 }}
               >
                 <Typography
+                variant= {props.activePageIndex == page.id?  "h5" : "h5"}
                   sx={{
                     fontWeight: props.activePageIndex == page.id ? "bold" : "",
-                    color: LayoutContextProvider.isDarkMode? "#50fa7b": "black",
+
+                    color: props.activePageIndex == page.id ? theme.palette.primary.main : theme.palette.text.primary,
                   }}
                 >
                   {page.title}

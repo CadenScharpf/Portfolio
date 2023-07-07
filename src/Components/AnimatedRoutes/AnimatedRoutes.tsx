@@ -77,11 +77,11 @@ const lightTheme = responsiveFontSizes(
     palette: {
       text: {
         primary: "#000",
-        secondary: "#134e4a",
+        secondary: "#94a3b8",
       },
       background: {
         default: "#fff",
-        paper: "#fff",
+        paper: "#f7f7f8",
       },
     },
     
@@ -102,7 +102,7 @@ const gradientAnimation = keyframes`
 
 export function AnimatedRoutes() {
   const [[itemCount, direction], setItemCount] = useState<[number, number]>([
-    2, 1,
+    0, 1,
   ]);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -186,6 +186,7 @@ export function AnimatedRoutes() {
                   backgroundSize: "400% 400%",
                   animation: `${gradientAnimation} 10s ease infinite`,
                   width: "90%",
+                  maxWidth: "1700px",
                   height: "95%",
                   display: "flex",
                   justifyContent: "center",
@@ -204,7 +205,7 @@ export function AnimatedRoutes() {
                   boxShadow: "0px 0px 5px 0px black",*/
 
                     overflow: "scroll",
-                    maxWidth: "1700px",
+
                   }}
                 >
                   {React.createElement(PAGES[activeItemIndex].component)}

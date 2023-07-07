@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ContentWindow } from "../../Components/ContentWindow";
 import { BackendApps, Section, WebApplications, Work } from "./Components";
-import { Button, Grid } from "@mui/material";
+import { Box, Button, Grid, useTheme } from "@mui/material";
 
 const styles: Record<string, React.CSSProperties> = {
   nav: {
@@ -31,15 +31,24 @@ const SECTIONS = {
 
 export function Works() {
   const [category, setCategory] = React.useState<keyof typeof SECTIONS>("web");
+  const theme = useTheme();
   useEffect(() => {});
   return (
-    <>
+    <Box sx={{
+      background: theme.palette.background.paper,
+      position: "relative",
+      width: "100%",
+      height: "100%",
+      
+      overflow: "hidden",
+      }}>
       <div style={styles.nav}>
         <Button
           variant="text"
           style={{
             ...styles.navItem,
             fontWeight: category === "web" ? "bold" : "",
+            color: category === "web"? theme.palette.primary.main : theme.palette.text.primary,
           }}
           onClick={() => {
             setCategory("web");
@@ -52,6 +61,7 @@ export function Works() {
           style={{
             ...styles.navItem,
             fontWeight: category === "backend" ? "bold" : "",
+            color: category === "backend"? theme.palette.primary.main : theme.palette.text.primary,
           }}
           onClick={() => {
             setCategory("backend");
@@ -66,6 +76,6 @@ export function Works() {
           {React.createElement(SECTIONS[category])}
         </Grid>
       </AnimatePresence>
-    </>
+    </Box>
   );
 }

@@ -3,13 +3,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export type CarouselItemProps =
-  | {
-      title?: string;
-      subtitle?: string;
-      description?: string;
-      image?: string;
-    }
-  | {
+ {
       children: React.ReactNode;
     };
 
@@ -24,13 +18,7 @@ export function CarouselItem(props: CarouselItemProps) {
         overflow: "scroll"
       }}
     >
-      {"children" in props ? (
-        props.children
-      ) : (
-        <>
-          <h1>{props.title? props.title : ""}</h1>
-        </>
-      )}
+        {props.children}
     </Box>
   );
 }

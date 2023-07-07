@@ -1,13 +1,9 @@
 import React from "react";
+import iSvgComponentProps from "./SvgComponentProps";
 
-interface iLogoProps {
-    width?: string;
-    height?: string;
-    fill?: string;
-    stroke?: string;
-}
 
-function Logo(props: iLogoProps) {
+
+function Logo(props: iSvgComponentProps) {
   return (
     <svg
       version="1.0"

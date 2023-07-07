@@ -25,7 +25,8 @@ const sliderVariants = {
 };
 
 const sliderTransition = {
-  duration: 1};
+  duration: 1,
+};
 
 interface ICarouselProps {
   data: CarouselItemProps[];
@@ -64,7 +65,7 @@ export function Carousel(props: ICarouselProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       swipeToItem(1); // Automatically advance to the next slide
-    },  10000 ); // 10 seconds
+    }, 10000); // 10 seconds
 
     return () => clearInterval(interval);
   }, [itemCount, swipeToItem]);
@@ -102,48 +103,54 @@ export function Carousel(props: ICarouselProps) {
         >
           <CarouselItem {...props.data[activeItemIndex]} />
         </Box>
-          <Stack
-            direction="row"
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              position: "absolute", // Set position to "relative"
-              bottom: 3, // Set bottom value to 0
-              left: 0, 
-              right: 0,
-              marginLeft: "auto",
-              marginRight: "auto",
-              background: "rgba(255, 255, 255, 0.7)",
-              borderRadius: "25px",
-              border: "2.5px solid black",
-              maxWidth: "50%",
-            }}
+        <Stack
+          direction="row"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            position: "absolute", // Set position to "relative"
+            bottom: 3, // Set bottom value to 0
+            left: 0,
+            right: 0,
+            marginLeft: "auto",
+            marginRight: "auto",
+            borderRadius: "25px",
+            maxWidth: "50%",
+          }}
+        >
+          <IconButton
+            sx={{ color: theme.palette.text.primary }}
+            onClick={() => swipeToItem(-1)}
           >
-            <IconButton onClick={() => swipeToItem(-1)}>
-              <ArrowLeftIcon />
-            </IconButton>
-              {props.data
-                ? props.data.map((item, index) => {
-                    return (
-                      <IconButton
-                        key={"icon" + index}
-                        onClick={() => skipToItem(index)}
-                      >
-                        <LensIcon
-                          fontSize={
-                            index === activeItemIndex ? "large" : "small"
-                          }
-                          style={{ color: "#191a21" }}
-                        />
-                      </IconButton>
-                    );
-                  })
-                : ""}
-            <IconButton onClick={() => swipeToItem(1)}>
-              <ArrowRightIcon />
-            </IconButton>
-
-          </Stack>
+            <ArrowLeftIcon />
+          </IconButton>
+          {props.data
+            ? props.data.map((item, index) => {
+                return (
+                  <IconButton
+                    key={"icon" + index}
+                    onClick={() => skipToItem(index)}
+                  >
+                    <LensIcon
+                      fontSize={index === activeItemIndex ? "large" : "small"}
+                      style={{
+                        color:
+                          index == activeItemIndex
+                            ? theme.palette.primary.main
+                            : theme.palette.text.primary,
+                      }}
+                    />
+                  </IconButton>
+                );
+              })
+            : ""}
+          <IconButton
+            sx={{ color: theme.palette.text.primary }}
+            onClick={() => swipeToItem(1)}
+          >
+            <ArrowRightIcon />
+          </IconButton>
+        </Stack>
       </AnimatePresence>
     </>
   );
