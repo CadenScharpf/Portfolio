@@ -1,7 +1,15 @@
 import React, { useContext } from "react";
 import { AnimatePresence, MotionStyle, motion } from "framer-motion";
 import { TRANSITION_DURATION } from "../PageStyle";
-import { useTheme, IconButton, Box, SxProps, Button, Link, Grid } from "@mui/material";
+import {
+  useTheme,
+  IconButton,
+  Box,
+  SxProps,
+  Button,
+  Link,
+  Grid,
+} from "@mui/material";
 import {} from "framer-motion";
 import HeadShot from "./hs.png";
 import { Container, Typography } from "@mui/material";
@@ -9,8 +17,8 @@ import { ContentWindow } from "../../Components/ContentWindow";
 import { Carousel } from "./Components";
 import { ITEMS } from "./CarouselItems";
 import { Image } from "@mui/icons-material";
-import EmailIcon from '@mui/icons-material/Email';
-import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import EmailIcon from "@mui/icons-material/Email";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import { LayoutContext } from "../../Components/AnimatedRoutes/AnimatedRoutes";
 import LetsTalk from "../../Components/SVGComponents/LetsTalk";
 
@@ -72,9 +80,9 @@ const STYLES: Record<string, SxProps> = {
     position: "absolute",
     top: 0,
     width: "100%",
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     zIndex: 99,
     background: "rgba(255, 255, 255, 0.5)",
   },
@@ -94,7 +102,6 @@ const STYLES: Record<string, SxProps> = {
     borderRadius: "50%",
     width: "100%",
     maxWidth: "400px",
-    
   },
 
   //Scene 2
@@ -106,7 +113,7 @@ const STYLES: Record<string, SxProps> = {
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",    
+    justifyContent: "center",
   },
 };
 
@@ -139,18 +146,19 @@ const letsTalkMotionWrapperVariants = {
 };
 
 const column1MotionVariants = {
-  initial: { height: '100%', opacity: 0, transition: { duration: .75 } },
-  animate: { height: "100%", opacity: 1, transition: { duration: .75 } },
+  initial: { height: "100%", opacity: 0, transition: { duration: 0.75 } },
+  animate: { height: "100%", opacity: 1, transition: { duration: 0.75 } },
   exit: {
-    height: '100%', opacity: 0,
-    transition: { duration: .75 },
+    height: "100%",
+    opacity: 0,
+    transition: { duration: 0.75 },
   },
 };
 
 export function Home() {
   const theme = useTheme();
   const LCP = useContext(LayoutContext);
-    const [contactPageState, setContactPageState] = React.useState(false);
+  const [contactPageState, setContactPageState] = React.useState(false);
 
   const toggleContactPageState = () => {
     setContactPageState(!contactPageState);
@@ -161,8 +169,11 @@ export function Home() {
   };
 
   return (
-    <Box id="container" sx={{...STYLES.container, background: theme.palette.background.paper}}>
-      <Box id="column1" sx={{ ...STYLES.column,  }}>
+    <Box
+      id="container"
+      sx={{ ...STYLES.container, background: theme.palette.background.paper }}
+    >
+      <Box id="column1" sx={{ ...STYLES.column }}>
         <AnimatePresence mode="wait">
           {contactPageState ? (
             <Box
@@ -173,7 +184,7 @@ export function Home() {
               initial="initial"
               animate="animate"
               exit="exit"
-              sx={{ ...STYLES.cardFlipMotionWrapper,  }}
+              sx={{ ...STYLES.cardFlipMotionWrapper }}
               onClick={() => {
                 setContactPageState(false);
               }}
@@ -203,25 +214,27 @@ export function Home() {
                   close
                 </Button>
 
-                <Typography variant="h3" sx={{ marginTop: '3rem', marginBottom: '2rem',}}>
+                <Typography
+                  variant="h3"
+                  sx={{ marginTop: "3rem", marginBottom: "2rem" }}
+                >
                   Let's Talk
                 </Typography>
 
-
-                  <Box sx={{display: 'flex'}}>
-                    <EmailIcon sx={{paddingRight: 3}} />
-                    <Typography variant="body1" sx={{  }}>
-                      <Link href="mailto:Caden.Scharpf@icloud.com">Caden.Scharpf@icloud.com</Link>
-                    </Typography>
-                  </Box>
-                  <Box sx={{display: 'flex', }}>
-                    <ContactPhoneIcon sx={{paddingRight: 3}} />
-                    <Typography variant="body1" sx={{  }}>
-                      <Link href="tel:480-326-4178">+1 (480) 326-4178</Link>
-                    </Typography>
-                  </Box>
-
-
+                <Box sx={{ display: "flex" }}>
+                  <EmailIcon sx={{ paddingRight: 3 }} />
+                  <Typography variant="body1" sx={{}}>
+                    <Link href="mailto:Caden.Scharpf@icloud.com">
+                      Caden.Scharpf@icloud.com
+                    </Link>
+                  </Typography>
+                </Box>
+                <Box sx={{ display: "flex" }}>
+                  <ContactPhoneIcon sx={{ paddingRight: 3 }} />
+                  <Typography variant="body1" sx={{}}>
+                    <Link href="tel:480-326-4178">+1 (480) 326-4178</Link>
+                  </Typography>
+                </Box>
               </Box>
             </Box>
           ) : (
@@ -239,12 +252,21 @@ export function Home() {
               duration: PHASE_ANIMATION_DURATION,
             }}
             src={HeadShot}
-            sx={{...STYLES.headshotSm, border: `3px solid ${theme.palette.primary.main}`}}
+            sx={{
+              ...STYLES.headshotSm,
+              border: `3px solid ${theme.palette.primary.main}`,
+            }}
           />
           <Box
             id="titleMotionWrapper"
             component={motion.div}
-            sx={{ margin: 0, padding: 0, color: theme.palette.text.primary /* LCP.isDarkMode? "#50fa7b":"#000"  */}}
+            sx={{
+              margin: 0,
+              padding: 0,
+              color:
+                theme.palette.text
+                  .primary /* LCP.isDarkMode? "#50fa7b":"#000"  */,
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -252,7 +274,7 @@ export function Home() {
               duration: PHASE_ANIMATION_DURATION,
             }}
           >
-            <Typography id="title" variant="h1" >
+            <Typography id="title" variant="h1">
               Caden
               <br />
               Scharpf
@@ -269,7 +291,11 @@ export function Home() {
             }}
             sx={STYLES.subtitleMotionWrapper}
           >
-            <Typography id="subtitle" variant="h2" sx={{color: theme.palette.text.secondary}}>
+            <Typography
+              id="subtitle"
+              variant="h2"
+              sx={{ color: theme.palette.text.secondary }}
+            >
               Software Engineer
             </Typography>
           </Box>
@@ -284,7 +310,11 @@ export function Home() {
             }}
             sx={STYLES.descriptionMotionWrapper}
           >
-            <Typography id="description" variant="body1" sx={{color: LCP.isDarkMode? "#f8f8f2" : "black"}}>
+            <Typography
+              id="description"
+              variant="body1"
+              sx={{ color: LCP.isDarkMode ? "#f8f8f2" : "black" }}
+            >
               Software Engineer with 2+ years of professional full stack
               development and a solid foundation in building scalable
               applications.
@@ -303,28 +333,38 @@ export function Home() {
                 type: "spring",
                 bounce: 0.8,
               }}
-              sx={{...STYLES.letsTalkMotionWrapper, }}
+              sx={{
+                ...STYLES.letsTalkMotionWrapper,
+                position: "relative",
+                overflow: "hidden",
+              }}
             >
-              <IconButton
-                onClick={() => {
-                  setContactPageState(true);
+              <motion.div
+                variants={letsTalkVariants}
+                initial="initial"
+                animate="animate"
+                whileHover=""
+                transition={{
+                  delay: getPhaseDelay(3),
+                  duration: PHASE_ANIMATION_DURATION,
                 }}
+                style={{ width: "100%", height: "100%" }}
               >
-                <motion.div
-                  variants={letsTalkVariants}
-                  initial="initial"
-                  animate="animate"
-                  whileHover=""
-                  transition={{
-                    delay: getPhaseDelay(3),
-                    duration: PHASE_ANIMATION_DURATION,
+                <IconButton
+                  onClick={() => {
+                    setContactPageState(true);
                   }}
-                  style={{ width: "60px" }}
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                  }}
                 >
-
-                  <LetsTalk fill={theme.palette.primary.main}  height="50px"/>
-                </motion.div>
-              </IconButton>
+                  <LetsTalk fill={theme.palette.primary.main} width="75%" />
+                </IconButton>
+              </motion.div>
             </Box>
           </Box>
         </Box>
@@ -340,7 +380,6 @@ export function Home() {
             lg: "flex",
             xl: "flex",
           },
-          
         }}
       >
         <Box
@@ -357,7 +396,10 @@ export function Home() {
             component={motion.img}
             alt="Headshot Photo"
             src={HeadShot}
-            sx={{...STYLES.headshotLg, border: `3px solid ${theme.palette.primary.main}`}}
+            sx={{
+              ...STYLES.headshotLg,
+              border: `3px solid ${theme.palette.primary.main}`,
+            }}
           />
         </Box>
         <Box
