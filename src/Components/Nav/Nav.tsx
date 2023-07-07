@@ -19,6 +19,7 @@ import {
 import Logo from '../SVGComponents/Logo'
 import { AnimatePresence, motion } from "framer-motion";
 import { LayoutContext } from "../../Components/AnimatedRoutes/AnimatedRoutes";
+import { COLORS } from "../../colors";
 
 interface iNavProps {
   activePageIndex: number;
@@ -57,19 +58,19 @@ export function Nav(props: iNavProps) {
 
   return (
     <AppBar className="nav" sx={styles.nav}>
-      <Box sx={{  height: '100%', position: 'absolute', left: 0,display: 'flex', alignItems: 'center'  }}>
+      <Box sx={{  height: '100%', position: 'absolute', left: 0,display: {xs: "none", md: 'flex'}, alignItems: 'center'  }}>
         <Logo fill={theme.palette.primary.main}  height="50px"  />
         <Box
             className="container"
             sx={{
               justifyContent: LayoutContextProvider.isDarkMode ? "flex-end" : "flex-start",
-              height: "40px",
-              width: "100px",
+              height: "33px",
+              width: "60px",
               mx: 3,
               backgroundImage:
               LayoutContextProvider.isDarkMode ?
-              "linear-gradient(109.8deg, rgba(62,5,116,1) -5.2%, rgba(41,14,151,1) -5.2%, rgba(216,68,148,1) 103.3%)":
-                "radial-gradient(circle farthest-corner at 10% 20%, rgba(253,203,50,1) 0%, rgba(244,56,98,1) 100.2%)", 
+              `linear-gradient(109.8deg, ${COLORS.dracula.cyan.main} -5.2%, ${COLORS.dracula.purple.main} -5.2%, ${COLORS.dracula.red.main} 103.3%)`:
+                `radial-gradient(circle farthest-corner at 10% 20%, ${COLORS.dracula.yellow.main} 0%, ${COLORS.dracula.red.main} 100.2%)`, 
 
               borderRadius: "25px",
               display: "flex",
@@ -77,6 +78,7 @@ export function Nav(props: iNavProps) {
               boxSizing: "border-box",
               padding: "0 5px",
               cursor: "pointer",
+              border:`1.5px solid ${theme.palette.primary.main}`,
               transition: "all 0.3s",
             }}
             data-darkmode={LayoutContextProvider.isDarkMode}
@@ -87,14 +89,15 @@ export function Nav(props: iNavProps) {
               layout
               className="handle"
               sx={{
-                height: "30px",
-                width: '30px',
+                height: "80%",
+                aspectRatio: "1/1",
                 borderRadius: "50%",
                 display: "grid",
                 alignItems: "center",
                 justifyItems: "center",
                 background: "white",
-                overflow: "hidden",
+                overflow: "hidden", 
+                p:0
               }}
             >
               <AnimatePresence initial={false}>
@@ -111,9 +114,10 @@ export function Nav(props: iNavProps) {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+
                   }}
                 >
-                  {LayoutContextProvider.isDarkMode ? (<DarkModeIcon/>) : (<LightModeIcon sx={{width: 27}}/>)}
+                  {LayoutContextProvider.isDarkMode ? (<DarkModeIcon/>) : (<LightModeIcon sx={{width: "90%"}}/>)}
                 </Box>
               </AnimatePresence>
             </Box>

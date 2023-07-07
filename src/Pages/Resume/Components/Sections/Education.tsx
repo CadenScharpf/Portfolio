@@ -27,14 +27,14 @@ export function Education(props: Props) {
       }}
     >
 
+      <SchoolIcon
+        sx={{
+          fontSize: props.showTitle? 100 : 50,
+          color: theme.palette.text.primary,
+        }}
+      />
       {props.showTitle && (
         <>
-          <SchoolIcon
-            sx={{
-              fontSize: 100,
-              color: theme.palette.text.primary,
-            }}
-          />
           <Typography
             variant="h3"
             sx={{ color: theme.palette.text.primary, marginBottom: 3 }}

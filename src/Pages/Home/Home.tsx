@@ -71,8 +71,8 @@ const STYLES: Record<string, SxProps> = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-     borderColor: "transparent",
-    borderWidth: "0px", 
+
+    borderWidth: "8px", 
   },
 
   // Column 2 (right) ----------------------------------------------
@@ -131,14 +131,14 @@ const column1Variants = {
 
 const letsTalkMotionWrapperVariants = {
   initial: {
-    width: "60px",
-    height: "60px",
+    width: "0px",
+    height: "0px",
   },
   animate: {
-    width: "80px",
-    height: "80px",
-    backgroundColor: "#ff5555",
-    borderStyle: "solid",
+    width: "50px",
+    height: "50px",
+/*     backgroundColor: "#ff5555",
+ */    borderStyle: "solid",
   },
   hover: {
     opacity: 0,
@@ -337,19 +337,10 @@ export function Home() {
                 ...STYLES.letsTalkMotionWrapper,
                 position: "relative",
                 overflow: "hidden",
+                borderColor: theme.palette.primary.light, 
               }}
             >
-              <motion.div
-                variants={letsTalkVariants}
-                initial="initial"
-                animate="animate"
-                whileHover=""
-                transition={{
-                  delay: getPhaseDelay(3),
-                  duration: PHASE_ANIMATION_DURATION,
-                }}
-                style={{ width: "100%", height: "100%" }}
-              >
+
                 <IconButton
                   onClick={() => {
                     setContactPageState(true);
@@ -365,9 +356,8 @@ export function Home() {
 
                   }}
                 >
-                  <LetsTalk fill={theme.palette.primary.main} width="75%" />
+                  <LetsTalk fill={theme.palette.primary.dark} width="100%" />
                 </IconButton>
-              </motion.div>
             </Box>
           </Box>
         </Box>

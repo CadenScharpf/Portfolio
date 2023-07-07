@@ -27,8 +27,7 @@ const EXPERIENCE_DATA = [
     timeframe: "May 2021 - Present",
     location: "Tempe, AZ",
     description:
-      `Deliver high-quality, robust production code for a diverse array of projects ` +
-      `for clients including Harvard Business School, Everytown for Gun Safety, Pratt `,
+      `Developed Enterprise Java APIs for customers and internal users to automate business processes and provision devices on the Network. Designed and developed a web interface to allow customers and service providers to manage accounts and devices on the network.` 
   },
   {
     employer: {
@@ -39,8 +38,7 @@ const EXPERIENCE_DATA = [
     timeframe: "May 2021 - Aug. 2021",
     location: "Tempe, AZ",
     description:
-      `Deliver high-quality, robust production code for a diverse array of projects ` +
-      `for clients including Harvard Business School, Everytown for Gun Safety, Pratt `,
+      `Developed unit tests and performed bug fixes for the Iridium Web Services Enterprise Java API andontributed to the successful conversion of the SOAP-based API to RESTful architecture.`
   },
   {
     employer: {
@@ -51,9 +49,7 @@ const EXPERIENCE_DATA = [
     timeframe: "Aug. 2022 - Apr. 2023",
     location: "Tempe, AZ",
     description:
-      `Deliver high-quality, robust production code for a diverse array of projects ` +
-      `for clients including Harvard Business School, Everytown for Gun Safety, Pratt ` +
-      `Institute, Koala Health, Vanderbilt University, The 19th News, and more. Provide `,
+      `Developed and styled an interactive mobile application used by the internal logistics team to track and manage delivery metrics in real time.`
   },
 ];
 

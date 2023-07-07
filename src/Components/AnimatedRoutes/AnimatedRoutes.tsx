@@ -140,6 +140,7 @@ export function AnimatedRoutes() {
             top: 0,
             height: "100vh",
             width: "100vw",
+            overflow: "hidden",
             background: isDarkMode ? "#282a36" : "white",
           }}
         >
@@ -198,7 +199,7 @@ export function AnimatedRoutes() {
                   id="content-window"
                   sx={{
                     width: "100%",
-                     border: "4px solid transparent",
+                     border: "3px solid transparent",
                      borderRadius: "25px",
                   /*borderWidth: "5px",
                   background: BORDER_COLOR, 
