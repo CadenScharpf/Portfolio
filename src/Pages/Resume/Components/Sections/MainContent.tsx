@@ -37,8 +37,7 @@ export function MainContent(props: Props) {
         sx={{
           width: "100%",
           height: titleHeight,
-          border: "2px solid black",
-          borderWidth: `0px 0px ${dividerHeight}px 0px`,
+          
           background: `${theme.palette.primary.main}dd`,
           color: theme.palette.primary.contrastText,
         }}

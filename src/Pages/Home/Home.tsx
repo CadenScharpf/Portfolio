@@ -71,8 +71,8 @@ const STYLES: Record<string, SxProps> = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "transparent",
-    borderWidth: "2px",
+     borderColor: "transparent",
+    borderWidth: "0px", 
   },
 
   // Column 2 (right) ----------------------------------------------
@@ -246,7 +246,7 @@ export function Home() {
             id="headshotSm"
             component={motion.img}
             initial={{ display: "none", opacity: 0, width: "0" }}
-            animate={{ display: "", opacity: 1, width: "25%" }}
+            animate={{ display: "", opacity: 1, width: "15%" }}
             transition={{
               delay: getPhaseDelay(4),
               duration: PHASE_ANIMATION_DURATION,
@@ -360,6 +360,9 @@ export function Home() {
                     position: "absolute",
                     top: 0,
                     left: 0,
+                    p: 0,
+                    m: 0,
+
                   }}
                 >
                   <LetsTalk fill={theme.palette.primary.main} width="75%" />
