@@ -38,7 +38,7 @@ const EXPERIENCE_DATA = [
     timeframe: "May 2021 - Aug. 2021",
     location: "Tempe, AZ",
     description:
-      `Developed unit tests and performed bug fixes for the Iridium Web Services Enterprise Java API andontributed to the successful conversion of the SOAP-based API to RESTful architecture.`
+      `Developed unit tests and performed bug fixes for the Iridium Web Services Enterprise Java API and contributed to the successful conversion of the SOAP-based API to RESTful architecture.`
   },
   {
     employer: {
