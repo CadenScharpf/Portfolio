@@ -18,7 +18,7 @@ interface App {
 
 const APPS = [
   {img: ManimCsWebPreview, title: 'Manim CS Web Demo', description: 'Web interfaced demonstration of the manim-cs animation library for python(github.com/CadenScharpf/manim-cs)', site: 'https://manimcs-demo.cadenscharpf.tech/', github: 'https://github.com/CadenScharpf/manim-cs-web'},
-  {img: PortfolioPreview, title: 'Portfolio', description: 'Personal developer portfolio website developed using Typescript and ReactJS', site: 'https://manimcs-demo.cadenscharpf.tech/', github: 'https://github.com/CadenScharpf/manim-cs-web'},
+  {img: PortfolioPreview, title: 'Portfolio', description: 'Personal developer portfolio website developed using Typescript and ReactJS', site: 'cadenscharpf.tech/', github: 'https://github.com/CadenScharpf/manim-cs-web'},
   {img: LgsDel, title: 'LGS Delivery Engine', description: 'QR Scanner/Logistics Tracking Software used by Local Grown Salads LLC delivery team members to manage active deliveries. Developed using React Native with the Expo CLI.', github: 'https://github.com/CadenScharpf/LgsDeliveryEngine'},
 
 ]
