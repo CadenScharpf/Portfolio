@@ -13,7 +13,6 @@ import {
 import {} from "framer-motion";
 import HeadShot from "./hs.png";
 import { Container, Typography } from "@mui/material";
-import { ContentWindow } from "../../Components/ContentWindow";
 import { Carousel } from "./Components";
 import { ITEMS } from "./CarouselItems";
 import { Image } from "@mui/icons-material";

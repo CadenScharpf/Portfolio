@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ContentWindow } from "../../Components/ContentWindow";
 import { BackendApps, Section, WebApplications, Work } from "./Components";
 import { Box, Button, Grid, useTheme } from "@mui/material";
 

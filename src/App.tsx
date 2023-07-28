@@ -9,7 +9,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import SouthIcon from '@mui/icons-material/South';
 import { Stack } from '@mui/material';
 import SocialStack from './Components/SocialStack/SocialStack';
-import { ContentWindow } from './Components/ContentWindow';
 
 
 
