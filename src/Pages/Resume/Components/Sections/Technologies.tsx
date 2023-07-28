@@ -60,7 +60,7 @@ export function Technologies(props: Props) {
       padding: 3,
     },
     icon: {
-      height: 30,
+      height: 40,
       margin: 10,
       filter: "grayscale(100%)",
     },
@@ -72,13 +72,13 @@ export function Technologies(props: Props) {
 
   const ICON_VARIANTS = {
     initial: {
-      height: 30,
+      height: 40,
       margin: 10,
       filter: "grayscale(100%)",
     },
     hover: {
       filter: "grayscale(0%)",
-      height: 50,
+      height: 60,
     },
   };
   return (

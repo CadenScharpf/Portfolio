@@ -1,5 +1,4 @@
 import React from 'react'
-import { ContentWindow } from '../../Components/ContentWindow'
 import { Carousel } from '../Home/Components'
 import { ITEMS } from '../Home/CarouselItems'
 

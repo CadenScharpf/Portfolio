@@ -138,7 +138,7 @@ export function AnimatedRoutes() {
           sx={{
             position: "absolute",
             top: 0,
-            height: "100vh",
+            height: `100vh`,
             width: "100vw",
             overflow: "hidden",
             background: isDarkMode ? "#282a36" : "white",
@@ -152,6 +152,7 @@ export function AnimatedRoutes() {
             />
 
             <Box
+              id="app-body"
               component={motion.div}
               key={activeItemIndex}
               variants={sliderVariants}
@@ -170,48 +171,35 @@ export function AnimatedRoutes() {
                 alignItems: "center",
                 margin: "1rem",
                 position: "absolute",
-                top: defaultLayoutParams.navHeight,
+                top:0,
+                /* top: defaultLayoutParams.navHeight, */
                 bottom: 0,
                 width: "100%",
+                paddingTop: `calc(${defaultLayoutParams.navHeight}px)`,
+                height: `calc(100vh - ${defaultLayoutParams.navHeight}px)`,
                 m: 0,
-                px: 0,
+                p: 0,
               }}
             >
-              <Box
-                className="gradient-border"
-                sx={{
-                  backgroundImage:
-                    isDarkMode? 
-                    `linear-gradient(45deg, ${COLORS.dracula.cyan.main}, ${COLORS.dracula.pink.main}, ${COLORS.dracula.yellow.main}, ${COLORS.dracula.green.main}, ${COLORS.dracula.red.main}, ${COLORS.dracula.pink.main}, ${COLORS.dracula.yellow.main}, ${COLORS.dracula.purple.main})` :
-                    `linear-gradient(45deg, #000 , #000)`,
-                  backgroundSize: "400% 400%",
-                  animation: `${gradientAnimation} 10s ease infinite`,
-                  width: "90%",
-                  maxWidth: "1700px",
-                  height: "95%",
-                  display: "flex",
-                  justifyContent: "center",
-                  borderRadius: "25px",
-                  boxShadow: "0px 0px 5px 0px black",
-                }}
-              >
+
                 <Box
                   id="content-window"
                   sx={{
                     width: "100%",
+                    height: "100%",
                      border: "3px solid transparent",
                      borderRadius: "25px",
                   /*borderWidth: "5px",
                   background: BORDER_COLOR, 
                   boxShadow: "0px 0px 5px 0px black",*/
-
+                  display: "flex",
+                  flexDirection: "column",
                     overflow: "scroll",
-
+                    mx: 5
                   }}
                 >
                   {React.createElement(PAGES[activeItemIndex].component)}
                 </Box>
-              </Box>
             </Box>
           </AnimatePresence>
         </Box>

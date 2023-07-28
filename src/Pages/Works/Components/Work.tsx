@@ -78,7 +78,7 @@ export function Work(props: iWorkProps) {
       className='overlay'
       >
         <h2>{props.title}</h2>
-        <div>{props.description}</div>
+        <div style={{maxWidth: '60%', left:0, right:0, marginLeft: 'auto', marginRight: 'auto'}}>{props.description}</div>
         <div style={{...styles.overlayButtons}}>
           {props.site? (<Button href={props.site} variant='contained' style={{...styles.overlayButton}}>Live Site</Button>): ''}
           {props.github? (<Button href={props.github}  variant='contained' style={{...styles.overlayButton}}>Source Code</Button>): ''}
