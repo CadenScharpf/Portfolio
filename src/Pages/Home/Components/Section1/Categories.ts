@@ -14,6 +14,7 @@ import meeting from "./assets/dba/presentboard-mobile-app.jpg";
 import lgs from "./assets/lgs.jpeg";
 import asu from "./assets/asu.jpg";
 import tool from "./assets/tool.jpg";
+import circuit from "./assets/pexels-nic-wood-6432107.jpg";
 
 
 
@@ -35,7 +36,7 @@ export const Categories: ICategory[] = [
   {
     type: "General",
     name: "Technologies",
-    image: `url(${tool})`,
+    image: `url(${circuit})`,
     component: Section1Technologies,
   },
   {

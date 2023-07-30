@@ -37,6 +37,7 @@ function Iridium() {
         alignItems: "center",
         paddingTop: "40px",
         color: "white",
+        textShadow: '#000 1px 0 2px',
       }}
     >
       <div

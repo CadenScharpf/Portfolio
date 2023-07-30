@@ -15,6 +15,7 @@ import LetsTalk from "../../../../../Components/SVGComponents/LetsTalk";
 import EmailIcon from "@mui/icons-material/Email";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import HeadShot from "../../..//hs.png";
+import { COLORS } from "../../../../../colors";
 
 const PHASE_DURATION = 1.5; //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = 1; //!< time it takes for each phase to animate
@@ -124,6 +125,7 @@ function Overview() {
         width: "100%",
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
+        textShadow: '#000 1px 0 2px',
       }}
     >
         {contactPageState ? (
@@ -268,8 +270,9 @@ function Overview() {
             id="description"
             variant="body1"
             sx={{
-              color: lcp.isDarkMode ? "#f8f8f2" : "#f8f8f2",
+              color: 'white',
               maxWidth: "500px",
+              fontSize: "1.5rem",
             }}
           >
             Software Engineer with 2+ years of professional full stack

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 function Home() {
     const lcp = useContext(LayoutContext);
     const DEFAULT_STYLES: Record<string, React.CSSProperties> = {
-        text:{maxWidth: 800, width: "92%", margin: '10px', color: 'white'}
+        text:{maxWidth: 800, width: "92%", margin: '10px', color: 'white',       textShadow: '#000 1px 0 2px',},
     };
   return (
     <>

@@ -12,39 +12,45 @@ import GitIcon from "./Assets/icons/other/git.png";
 import BashIcon from "./Assets/icons/other/bash.png";
 import NginxIcon from "./Assets/icons/other/nginx.png";
 import { motion } from "framer-motion";
-import { Box, Container, Typography, useTheme } from "@mui/material";
+import { Box, Container, Tooltip, Typography, useTheme } from "@mui/material";
 import { MainContent } from "./MainContent";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import ICONS from "../../../../Icons";
 
-const TECH_ICONS: Record<string, string[]> = {
-  frontend: [ICONS.js, ICONS.css, ICONS.html, ICONS.mui, ICONS.react],
-  backend: [
-    ICONS.node,
-    ICONS.flask,
-    ICONS.spring,
-    ICONS.sql,
-    ICONS.ts,
-    ICONS.python,
-    ICONS.java,
-  ],
-  other: [ICONS.aws, ICONS.docker, ICONS.git, ICONS.bash, ICONS.nginx],
+
+type TechIconCategory = Record<string, string>;
+type TechIconCategories = Record<string, TechIconCategory>;
+const TECH_ICONS: TechIconCategories = {
+  frontend: {JAVASCRIPT: ICONS.js, css: ICONS.css, HTML: ICONS.html, MaterialUI: ICONS.mui, ReactJS: ICONS.react},
+  backend: {
+    Node: ICONS.node,
+    PythonFlask: ICONS.flask,
+    JavaSpring: ICONS.spring,
+    Sql: ICONS.sql,
+    Typescript: ICONS.ts,
+    Python: ICONS.python,
+    Java: ICONS.java,}
+  ,
+  other: {AWS: ICONS.aws,Docker: ICONS.docker,Git: ICONS.git, Bash: ICONS.bash,NGINX: ICONS.nginx},
 };
 interface Props {
   showTitle?: boolean;
 }
 export function Technologies(props: Props) {
   const theme = useTheme();
-  const iconMap = (iconPaths: string[]) =>
-    iconPaths.map((file, idx) => (
-      <motion.img
+  const iconMap = (techIconCategory: TechIconCategory) =>
+    Object.keys(techIconCategory).map((techIcon: string, index: number) => (
+      <Tooltip title={techIcon} arrow>
+        <motion.img
         whileHover="hover"
         initial="initial"
         variants={ICON_VARIANTS}
-        key={"icon" + idx}
-        src={file}
+        key={"icon" + index}
+        src={techIconCategory[techIcon]}
         style={styles.icon}
       />
+      </Tooltip>
+      
     ));
   const styles: Record<string, React.CSSProperties> = {
     techBox: {

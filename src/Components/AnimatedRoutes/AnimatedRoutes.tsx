@@ -105,7 +105,7 @@ export function AnimatedRoutes() {
     0, 1,
   ]);
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const activeItemIndex = wrap(0, PAGES.length, itemCount);
 
   const swipeToItem = (swipeDirection: number) => {

@@ -2,7 +2,7 @@ import React, { useEffect, useImperativeHandle, useRef } from "react";
 import { Categories, ICategory } from "../Categories";
 import { Box, Typography, useTheme } from "@mui/material";
 import { NavStateContext } from "../Section1";
-import { AnimatePresence, easeIn, motion } from "framer-motion";
+import { AnimatePresence, easeIn, easeOut, motion } from "framer-motion";
 
 const previewDuration = 10000
 
@@ -238,7 +238,7 @@ const CategoryMenuItem = React.forwardRef<
               left: 0,
               top: '15%',
               height: "70%",
-              background: "rgba(255,255,255,.2)",
+              background: "rgba(255,255,255,.3)",
             }}
             ></Box>
             )}

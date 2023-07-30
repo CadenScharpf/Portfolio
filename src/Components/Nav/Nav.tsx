@@ -53,6 +53,7 @@ export function Nav(props: iNavProps) {
       fontWeight: "600",
       fontSize: "1.2rem",
       padding: "1em",
+      textShadow: '#000 1px 0 2px',
     },
   };
 
@@ -150,7 +151,6 @@ export function Nav(props: iNavProps) {
                 variant={props.activePageIndex == page.id ? "h5" : "h5"}
                 sx={{
                   fontWeight: props.activePageIndex == page.id ? "bold" : "",
-
                   color:
                     props.activePageIndex == page.id
                       ? theme.palette.primary.main
