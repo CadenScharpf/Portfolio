@@ -314,7 +314,7 @@ export function Home() {
               variant="body1"
               sx={{ color: LCP.isDarkMode ? "#f8f8f2" : "black" }}
             >
-              Software Engineer with 2+ years of professional full stack
+              Software Engineer with 6+ years of experience in full stack web
               development and a solid foundation in building scalable
               applications.
             </Typography>
