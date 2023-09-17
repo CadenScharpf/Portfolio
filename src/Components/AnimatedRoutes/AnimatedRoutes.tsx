@@ -161,8 +161,8 @@ export function AnimatedRoutes() {
               animate="active"
               exit="exit"
               transition={sliderTransition}
-              drag="x"
-              onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)}
+/*               drag="x"
+              onDragEnd={(_, dragInfo) => dragEndHandler(dragInfo)} */
               sx={{
                 display: "flex",
                 justifyContent: "center",
