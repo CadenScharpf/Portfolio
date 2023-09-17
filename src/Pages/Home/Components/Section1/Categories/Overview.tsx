@@ -203,7 +203,7 @@ function Overview() {
         ) : (
           <></>
         )}
-      <Box id="column1MainContent" sx={{width:'50%', display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center' }}>
+      <Box id="column1MainContent" sx={{width:{xs: '100%', md: '50%'}, height: '100%', display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center' }}>
         <Box
           id="headshotSm"
           component={motion.img}
@@ -273,6 +273,7 @@ function Overview() {
               color: 'white',
               maxWidth: "500px",
               fontSize: "1.5rem",
+              display: {xs: "none", md: 'block'}
             }}
           >
             Software Engineer with 2+ years of professional full stack

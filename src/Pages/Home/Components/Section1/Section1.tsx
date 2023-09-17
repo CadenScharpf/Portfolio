@@ -70,11 +70,11 @@ function LandingSection1() {
       <div
         id="Section1Content"
         className="ContentRow"
-        style={{ flexGrow: 4, width: "100%", display: "flex" }}
+        style={{ flexGrow: 4, width: "100%", display: "flex", overflow: 'scoll'  }}
       >
         {React.createElement(category.component)}
       </div>
-      <div style={{ flexGrow: 1, width: "100%", maxHeight: 120 }}>
+      <div style={{ flexGrow: 1, width: "100%", maxHeight: 120,  }}>
         <CategoryNav categories={Categories} setCategory={setCategory} />
       </div>
     </NavStateContext.Provider>

@@ -195,7 +195,7 @@ export function AnimatedRoutes() {
                   display: "flex",
                   flexDirection: "column",
                     overflow: "scroll",
-                    mx: 5
+                    mx: {xs: 0, md: 5}
                   }}
                 >
                   {React.createElement(PAGES[activeItemIndex].component)}
