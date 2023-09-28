@@ -5,6 +5,7 @@ import ManimCsWebPreview from '../Assets/ManimCSWebPreview.png'
 import ManimCsPreview from '../Assets/ManimCsPreview.png'
 import PortfolioPreview from '../Assets/PortfolioPreview.png'
 import LgsDel from '../Assets/LgsDeliveryEngine.png'
+import HiveLink from '../Assets/HiveLinkThumbnail.png'
 import { AnimatePresence, motion } from 'framer-motion'
 import { TRANSITION_DURATION } from '../../PageStyle'
 
@@ -17,10 +18,10 @@ interface App {
 }
 
 const APPS = [
+  {img: HiveLink, title: 'Hive Link Web UI', description: 'HiveLink is an all-in-one platform for seamless smart home experiences. With HiveLink, you can effortlessly purchase, manage, and schedule installation services for a wide range of smart home devices. Built With React.js', github: 'https://github.com/CadenScharpf/HiveLinkDomotics'},
   {img: ManimCsWebPreview, title: 'Manim CS Web Demo', description: 'Web interfaced demonstration of the manim-cs animation library for python(github.com/CadenScharpf/manim-cs)', site: 'https://manimcs-demo.cadenscharpf.tech/', github: 'https://github.com/CadenScharpf/manim-cs-web'},
-  {img: PortfolioPreview, title: 'Portfolio', description: 'Personal developer portfolio website developed using Typescript and ReactJS', site: 'cadenscharpf.tech/', github: 'https://github.com/CadenScharpf/manim-cs-web'},
   {img: LgsDel, title: 'LGS Delivery Engine', description: 'QR Scanner/Logistics Tracking Software used by Local Grown Salads LLC delivery team members to manage active deliveries. Developed using React Native with the Expo CLI.', github: 'https://github.com/CadenScharpf/LgsDeliveryEngine'},
-
+  {img: PortfolioPreview, title: 'Portfolio', description: 'Personal developer portfolio website developed using Typescript and ReactJS', site: 'cadenscharpf.tech/', github: 'https://github.com/CadenScharpf/manim-cs-web'},
 ]
 const PHASE_DURATION = .25; //!< time between triggerings of each phase
 const PHASE_ANIMATION_DURATION = .5; //!< time it takes for each phase to animate

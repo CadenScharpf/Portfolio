@@ -39,7 +39,7 @@ export function Works() {
       width: "100%",
       height: "100%",
       
-      overflow: "hidden",
+      overflow: "scroll",
       }}>
       <div style={styles.nav}>
         <Button
@@ -71,7 +71,7 @@ export function Works() {
       </div>
       <AnimatePresence>
 
-        <Grid container spacing={2} sx={{ px: 2 }}>
+        <Grid container spacing={3} sx={{ px: 2 }}>
           {React.createElement(SECTIONS[category])}
         </Grid>
       </AnimatePresence>

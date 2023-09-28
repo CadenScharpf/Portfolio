@@ -20,7 +20,7 @@ const styles: Record<string, React.CSSProperties> = {
     width: '100%',
     height: '100%',
     opacity: 1,
-    
+       
   },
   img: {
     width: '100%',
@@ -71,7 +71,7 @@ export function Work(props: iWorkProps) {
       whileHover="hover"
       initial="initial"
       >
-      <img src={props.img} style={styles.img} />
+      <img alt="" src={props.img} style={styles.img} />
       <motion.div 
       style={styles.overlay}
       variants={overlayVariants}
@@ -82,7 +82,6 @@ export function Work(props: iWorkProps) {
         <div style={{...styles.overlayButtons}}>
           {props.site? (<Button href={props.site} variant='contained' style={{...styles.overlayButton}}>Live Site</Button>): ''}
           {props.github? (<Button href={props.github}  variant='contained' style={{...styles.overlayButton}}>Source Code</Button>): ''}
-          
         </div>
       </motion.div>
     </motion.div>

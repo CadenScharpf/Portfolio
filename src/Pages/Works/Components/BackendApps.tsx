@@ -4,6 +4,8 @@ import { Work } from './Work'
 import ManimCsWebPreview from '../Assets/ManimCSWebPreview.png'
 import ManimCsPreview from '../Assets/ManimCsPreview.png'
 import { motion } from 'framer-motion'
+import HiveLink from '../Assets/HiveLinkThumbnail.png'
+
 
 interface App {
   img: string,
@@ -14,8 +16,8 @@ interface App {
 }
 
 const APPS = [
+  {img: HiveLink, title: 'Hive Link API', description: 'HiveLink is an all-in-one platform for seamless smart home experiences. With HiveLink, you can effortlessly purchase, manage, and schedule installation services for a wide range of smart home devices. Built With Express.js and React.js', github: 'https://github.com/CadenScharpf/HiveLinkDomotics'},
   {img: ManimCsPreview, title: 'Manim CS', description: 'An animation library for explanatory Computer Science videos', site: 'https://pypi.org/project/manimcs/', github: 'https://github.com/CadenScharpf/manim-cs'},
-
 ]
 
 const PHASE_DURATION = .25; //!< time between triggerings of each phase

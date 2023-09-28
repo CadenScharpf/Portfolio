@@ -8,7 +8,6 @@ interface ISectionProps  {
 export function Section(props: ISectionProps) {
   return (
     <AnimatePresence mode="wait">
-
       <Grid container spacing={2} sx={{px: 2}} >
           {props.children}
       </Grid>
