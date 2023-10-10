@@ -1,1 +1,1 @@
-export { Works } from './Works'
+export { WorksPage as Works } from './WorksPage'

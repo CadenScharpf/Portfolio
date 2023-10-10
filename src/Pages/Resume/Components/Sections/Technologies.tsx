@@ -15,43 +15,27 @@ import { motion } from "framer-motion";
 import { Box, Container, Tooltip, Typography, useTheme } from "@mui/material";
 import { MainContent } from "./MainContent";
 import ConstructionIcon from "@mui/icons-material/Construction";
-import ICONS from "../../../../Icons";
+import TechIcon, {
+  ICONS,
+  TechIconVariant,
+} from "../../../../Components/TechIcon/TechIcon";
 
-
-type TechIconCategory = Record<string, string>;
-type TechIconCategories = Record<string, TechIconCategory>;
+type TechIconCategories = Record<string, Array<TechIconVariant>>;
 const TECH_ICONS: TechIconCategories = {
-  frontend: {JAVASCRIPT: ICONS.js, css: ICONS.css, HTML: ICONS.html, MaterialUI: ICONS.mui, ReactJS: ICONS.react},
-  backend: {
-    Node: ICONS.node,
-    PythonFlask: ICONS.flask,
-    JavaSpring: ICONS.spring,
-    Sql: ICONS.sql,
-    Typescript: ICONS.ts,
-    Python: ICONS.python,
-    Java: ICONS.java,}
-  ,
-  other: {AWS: ICONS.aws,Docker: ICONS.docker,Git: ICONS.git, Bash: ICONS.bash,NGINX: ICONS.nginx},
+  frontend: ["js", "css", "html", "mui", "react"],
+  backend: ["node", "expressJs", "prisma",  "flask", "spring", "sql", "ts", "python", "java"],
+  other: ["aws", "docker", "git", "bash", "nginx"],
 };
 interface Props {
   showTitle?: boolean;
 }
 export function Technologies(props: Props) {
   const theme = useTheme();
-  const iconMap = (techIconCategory: TechIconCategory) =>
-    Object.keys(techIconCategory).map((techIcon: string, index: number) => (
-      <Tooltip title={techIcon} arrow>
-        <motion.img
-        whileHover="hover"
-        initial="initial"
-        variants={ICON_VARIANTS}
-        key={"icon" + index}
-        src={techIconCategory[techIcon]}
-        style={styles.icon}
-      />
-      </Tooltip>
-      
+  const iconMap = (techIconCategory: Array<TechIconVariant>) =>
+    techIconCategory.map((tech: TechIconVariant) => (
+      <TechIcon variant={tech} height={40} />
     ));
+
   const styles: Record<string, React.CSSProperties> = {
     techBox: {
       display: "flex",
@@ -65,28 +49,8 @@ export function Technologies(props: Props) {
       background: theme.palette.background.default,
       padding: 3,
     },
-    icon: {
-      height: 40,
-      margin: 10,
-      filter: "grayscale(100%)",
-    },
-    iconHover: {
-      filter: "grayscale(0%)",
-      height: 50,
-    },
   };
 
-  const ICON_VARIANTS = {
-    initial: {
-      height: 40,
-      margin: 10,
-      filter: "grayscale(100%)",
-    },
-    hover: {
-      filter: "grayscale(0%)",
-      height: 60,
-    },
-  };
   return (
     <Box
       className="technologies"

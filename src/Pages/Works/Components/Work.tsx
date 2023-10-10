@@ -2,6 +2,7 @@ import { Button, useTheme } from '@mui/material';
 import { CSSProperties } from '@mui/styled-engine-sc';
 import { motion } from 'framer-motion';
 import React from 'react'
+import TechIcon, { TechIconVariant } from '../../../Components/TechIcon/TechIcon';
 
 interface iWorkProps {
   img: string;
@@ -10,6 +11,7 @@ interface iWorkProps {
   containerStyle?: React.CSSProperties;
   site? : string;
   github? : string;
+  tech : TechIconVariant[];
 }
 
 const styles: Record<string, React.CSSProperties> = {
@@ -17,9 +19,11 @@ const styles: Record<string, React.CSSProperties> = {
     overflow: 'hidden',
     position: 'relative', // Add position property
     borderRadius: '25px',
+    
     width: '100%',
     height: '100%',
     opacity: 1,
+
        
   },
   img: {
@@ -67,7 +71,7 @@ export function Work(props: iWorkProps) {
   return (
     <motion.div 
       className="work" 
-      style={{ ...styles.work, ...props.containerStyle, border: `3px solid ${theme.palette.primary.main}`, }}
+      style={{ ...styles.work, ...props.containerStyle, border: `1px solid ${theme.palette.primary.main}`, }}
       whileHover="hover"
       initial="initial"
       >
@@ -79,6 +83,7 @@ export function Work(props: iWorkProps) {
       >
         <h2>{props.title}</h2>
         <div style={{maxWidth: '60%', left:0, right:0, marginLeft: 'auto', marginRight: 'auto'}}>{props.description}</div>
+        {props.tech.map((tech: TechIconVariant) => <TechIcon variant={tech}></TechIcon>)}
         <div style={{...styles.overlayButtons}}>
           {props.site? (<Button href={props.site} variant='contained' style={{...styles.overlayButton}}>Live Site</Button>): ''}
           {props.github? (<Button href={props.github}  variant='contained' style={{...styles.overlayButton}}>Source Code</Button>): ''}
